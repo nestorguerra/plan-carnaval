@@ -23,14 +23,15 @@ assert [s['n'] for s in SEM] == list(range(1, 14)), 'semanas'
 
 # --- Tareas de Annie y de Néstor, tal como están en el plan
 T = {}
-for m in re.finditer(r'<input type="checkbox" id="(w(\d+)(?:c|h|x\d))" data-t="a"( data-clave)?><span><b class="(?:clave|marca)">([^<]*)</b>(.*?)<small class="dato">(.*?)</small></span>', P, re.S):
+for m in re.finditer(r'<input type="checkbox" id="(w(\d+)(?:c|h|r|x\d))" data-t="a"( data-clave)?><span><b class="(?:clave|marca)">([^<]*)</b>(.*?)<small class="dato">(.*?)</small></span>', P, re.S):
     marca = plano(m[4])
     tipo = 'imp' if m[3] else ('hab' if marca == 'Hábito' else 'sp')
     T[m[1]] = dict(tipo=tipo, marca=marca, texto=plano(m[5]), dato=plano(m[6]), s=int(m[2]), pueblo=(marca == 'Si estás en el pueblo'), de='a')
-assert len(T) == 36, len(T)
+N_ANNIE, N_NESTOR = len(re.findall(r'data-t="a"[ >]', P)), len(re.findall(r'data-t="p">', P))
+assert len(T) == N_ANNIE, (len(T), N_ANNIE)
 for m in re.finditer(r'<input type="checkbox" id="(s(\d+)p\d)" data-t="p"><span>(.*?)</span>', P, re.S):
     T[m[1]] = dict(tipo='nes', marca='Lo hace Néstor', texto=plano(m[3]), dato='', s=int(m[2]), pueblo=False, de='p')
-assert len(T) == 68, len(T)
+assert len(T) == N_ANNIE + N_NESTOR, (len(T), N_ANNIE + N_NESTOR)
 
 def propio(tipo, marca, texto, dato=''):
     return dict(tipo=tipo, marca=marca, texto=texto, dato=dato, pueblo=False, de='x')
@@ -52,6 +53,7 @@ ANTES = {
     'w3c': ['s2p2'], 'w4h': ['s2p2'], 'w5h': ['s2p2'], 'w9h': ['s2p2'], 'w10h': ['s2p2'], 'w11h': ['s2p2'],
     'w3x2': ['s3p4'], 'w5c': ['s5p4'], 'w5x1': ['s5p4'], 'w6c': ['s5p4'], 'w8x1': ['s1p2'], 'w9c': ['s8p3'],
     'w10c': ['s1p1'], 'w11c': ['s9p1', 's10p1'], 'w11x1': ['s10p3'], 'w12c': ['s9p1', 's12p1'],
+    'w2r': ['s2p4'], **{'w%dr' % n: ['s3p4'] for n in range(3, 13)},
     'm2': ['s1p2'], 'm5': ['s1p2'], 'm8': ['s1p2'], 'm12': ['s1p2'],
 }
 
@@ -59,10 +61,9 @@ todas = lambda ids: {n: list(ids) for n in range(1, 14)}
 GRUPOS = [
     dict(id='p1', eti='Plan 1', nombre='Llegar a la gente', meta='Meta: 300 personas que han jugado', filas=[
         ('Tu lista de 30', {1: ['w1c']}),
-        ('Canal de WhatsApp', {1: ['w1x1']}),
         ('Mensajes uno a uno', {3: ['w3c'], 4: ['w4h'], 5: ['w5h'], 9: ['w9h'], 10: ['w10h'], 11: ['w11h']}),
         ('Cómplices en el pueblo', {2: ['w2x1'], 11: ['w11x1']}),
-        ('Que corra la voz', {3: ['w3x2'], 5: ['w5x1'], 6: ['w6x1'], 7: ['w7x1']}),
+        ('Que corra la voz', {5: ['w5x1'], 6: ['w6x1'], 7: ['w7x1']}),
         ('La tarde de Navidad', {5: ['w5c'], 6: ['w6c']}),
         ('Carnaval dentro del juego', {9: ['w9x1'], 11: ['w11c'], 12: ['w12c', 'w12x1', 'w12x2']}),
         ('Dar las gracias', {13: ['w13x1']}),
@@ -85,6 +86,12 @@ GRUPOS = [
         ('Elegir pueblo y persona', {10: ['w10c']}),
         ('Néstor lo construye', {8: ['s8p1'], 9: ['OBRA'], 10: ['OBRA'], 11: ['s11p1']}),
     ]),
+    dict(id='p5', eti='Plan 5', nombre='Gente joven en redes', meta='Meta: 100 jugadores que llegan desde las redes', filas=[
+        ('Aprender de quien lo hace bien', {1: ['w1x3']}),
+        ('Las cuentas', {1: ['w1x1']}),
+        ('Dos vídeos a la semana', {**{n: ['w%dr' % n] for n in range(2, 13)}, 13: ['w13x2']}),
+        ('Creadores de la zona', {9: ['w9x2']}),
+    ]),
     dict(id='fin', eti='Al final', nombre='Decidir', meta='El 14 de febrero se mira a qué altura ha llegado cada meta', filas=[
         ('Revisión y decisión', {13: ['w13c']}),
     ]),
@@ -94,7 +101,7 @@ GRUPOS = [
         ('Entrar bien desde el móvil', {2: ['s2p2'], 3: ['s3p2'], 6: ['s6p1'], 7: ['s7p1', 's7p2']}),
         ('Crecer de pueblo en pueblo', {5: ['s5p1', 's5p2'], 9: ['s9p1', 's9p2']}),
         ('Vender', {1: ['s1p3'], 3: ['s3p3'], 8: ['s8p2'], 10: ['s10p1', 's10p2']}),
-        ('Lo que te prepara para enviar', {3: ['s3p4'], 5: ['s5p4'], 8: ['s8p3'], 10: ['s10p3']}),
+        ('Lo que te prepara para enviar', {2: ['s2p4'], 3: ['s3p4'], 5: ['s5p4'], 8: ['s8p3'], 10: ['s10p3']}),
         ('Arreglos y guardia', {6: ['s6p2'], 11: ['s11p2'], 12: ['s12p1']}),
     ]),
 ]
@@ -419,6 +426,7 @@ body.con-ficha .hoja { padding-bottom: 62vh; }
 
 @media (min-width: 40rem) {
   .alturas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .altura:last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 @media (min-width: 48rem) {
   :root { --rot: 15rem; --sem: 3.4rem; }
@@ -433,7 +441,8 @@ body.con-ficha .hoja { padding-bottom: 62vh; }
   .franja i { display: inline; }
 }
 @media (min-width: 66rem) {
-  .alturas { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.75rem 1.5rem; }
+  .alturas { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.75rem 1.25rem; }
+  .altura:last-child:nth-child(odd) { grid-column: auto; }
 }
 '''
 
@@ -606,7 +615,7 @@ CUERPO = '''
 <header class="cabecera">
   <p class="eti">388 Pueblos · Plan de validación · 17 nov 2026 – 14 feb 2027</p>
   <h1>El plan, <em>de un vistazo</em></h1>
-  <p class="entrada">Annie: este es el mismo plan, dibujado. De izquierda a derecha, las trece semanas hasta Carnaval. De arriba abajo, los cuatro planes y sus acciones. Toca una barra para ver qué hay que hacer, cuánto lleva y desde dónde.</p>
+  <p class="entrada">Annie: este es el mismo plan, dibujado. De izquierda a derecha, las trece semanas hasta Carnaval. De arriba abajo, los cinco planes y sus acciones. Toca una barra para ver qué hay que hacer, cuánto lleva y desde dónde.</p>
   <p class="entrada-mas">@@ENLACE_ARRIBA@@</p>
 </header>
 
@@ -623,8 +632,8 @@ CUERPO = '''
 </section>
 
 <section class="bloque" id="objetivo" aria-labelledby="h-objetivo">
-  <h2 id="h-objetivo">Un objetivo, cuatro planes</h2>
-  <p>El objetivo es saber, antes de Carnaval, si 388 Pueblos tiene futuro. Se sabrá por cuatro cosas, y cada una tiene su plan. En cada plan, el <b>suelo</b> ya hace que haya merecido la pena, la <b>meta</b> es a por lo que vas y el <b>sueño</b> está para apuntar alto.</p>
+  <h2 id="h-objetivo">Un objetivo, cinco planes</h2>
+  <p>El objetivo es saber, antes de Carnaval, si 388 Pueblos tiene futuro. Se sabrá por cuatro cosas, cada una con su plan, y un quinto plan lleva el juego a la gente joven. En cada plan, el <b>suelo</b> ya hace que haya merecido la pena, la <b>meta</b> es a por lo que vas y el <b>sueño</b> está para apuntar alto.</p>
   <ul class="alturas">
     <li class="altura">
       <span class="eti">Plan 1</span>
@@ -670,6 +679,17 @@ CUERPO = '''
         <div class="sueno"><dt>Sueño</dt><dd>Su ayuntamiento pide reunión</dd></div>
       </dl>
     </li>
+    <li class="altura">
+      <span class="eti">Plan 5</span>
+      <h3><a href="#g-p5">Gente joven en redes</a></h3>
+      <p class="d">TikTok e Instagram, con memes y retos hechos con el juego: dos vídeos por semana.</p>
+      <p class="mide">Se mide en vídeos publicados y en jugadores que llegan desde las redes.</p>
+      <dl>
+        <div><dt>Suelo</dt><dd>20 vídeos publicados</dd></div>
+        <div class="meta"><dt>Meta</dt><dd>100 jugadores desde las redes</dd></div>
+        <div class="sueno"><dt>Sueño</dt><dd>Un vídeo con 100.000 reproducciones</dd></div>
+      </dl>
+    </li>
   </ul>
 </section>
 
@@ -677,7 +697,7 @@ CUERPO = '''
   <h2 id="h-leer">Cómo se lee</h2>
   <ul class="leyenda">
     <li>@@M_IMP@@<span class="txt"><b>Lo importante.</b> La única tarea que hace falta esa semana.</span></li>
-    <li>@@M_HAB@@<span class="txt"><b>Hábito.</b> Tus diez mensajes de la semana.</span></li>
+    <li>@@M_HAB@@<span class="txt"><b>Hábito.</b> Lo que se repite cada semana: tus mensajes y tus vídeos.</span></li>
     <li>@@M_SP@@<span class="txt"><b>Si puedes.</b> Suma, pero no es obligatorio.</span></li>
     <li>@@M_SPP@@<span class="txt"><b>Si estás en el pueblo.</b> Solo si esa semana bajas a Guareña.</span></li>
     <li>@@M_RUT@@<span class="txt"><b>Cada viernes.</b> Quince minutos con Néstor.</span></li>

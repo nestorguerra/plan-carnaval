@@ -214,6 +214,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
   .barra a { font-size: 0.74rem; }
   .hoy { padding: 1.75rem 1.75rem 1.9rem; }
   .alturas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .altura:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .ritmo { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .fases { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 1.25rem; }
   .semana > summary { grid-template-columns: 4.5rem minmax(0, 1fr) auto; gap: 1rem; padding-block: 1.1rem; }
@@ -256,7 +257,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
 </section>
 
 <section class="bloque" id="metas" aria-labelledby="h-metas">
-  <h2 id="h-metas">Cuatro metas, tres alturas</h2>
+  <h2 id="h-metas">Cinco metas, tres alturas</h2>
   <p>Cada meta tiene tres alturas para el 9 de febrero. El <b>suelo</b> es lo que hace que estas doce semanas hayan merecido la pena. La <b>meta</b> es a por lo que vamos. El <b>sueño</b> es lo que pasa si todo sale bien: está para apuntar alto, no para exigírtelo.</p>
   <ul class="alturas">
     <li class="altura num">
@@ -295,18 +296,27 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
         <div class="sueno"><dt>Sueño</dt><dd>Su ayuntamiento pide una reunión</dd></div>
       </dl>
     </li>
+    <li class="altura">
+      <h3>Gente joven en redes</h3>
+      <p class="d">TikTok e Instagram, con memes y retos hechos con el juego.</p>
+      <dl>
+        <div><dt>Suelo</dt><dd>20 vídeos publicados, dos por semana</dd></div>
+        <div class="meta"><dt>Meta</dt><dd>100 jugadores que llegan desde las redes</dd></div>
+        <div class="sueno"><dt>Sueño</dt><dd>Un vídeo con 100.000 reproducciones</dd></div>
+      </dl>
+    </li>
   </ul>
-  <p class="regla"><b>Tu parte es hablar con gente.</b> Sesenta mensajes uno a uno y diez personas vistas jugar de aquí a Carnaval: eso sí depende de ti. Cuántos entran, cuántos vuelven y qué contesta el Ayuntamiento es lo que tiene que demostrar el proyecto. No es un examen tuyo.</p>
+  <p class="regla"><b>Tu parte es hablar con gente.</b> Sesenta mensajes uno a uno, diez personas vistas jugar y dos vídeos a la semana de aquí a Carnaval: eso sí depende de ti. Cuántos entran, cuántos vuelven y qué contesta el Ayuntamiento es lo que tiene que demostrar el proyecto. No es un examen tuyo.</p>
 </section>
 
 <section class="bloque" id="ritmo" aria-labelledby="h-ritmo">
   <h2 id="h-ritmo">Cómo se trabaja cada semana</h2>
   <ul class="ritmo">
     <li><span class="eti">Una cosa importante</span><span><b>Con esa, la semana está sellada.</b> La tarea que lleva <b class="clave">Lo importante</b>delante es la única que hace falta cada semana. El resto suma.</span></li>
-    <li><span class="eti">A ratos, desde el móvil</span><span><b>Mensajes, llamadas y audios.</b> Casi todo se hace desde donde estés. Lo presencial se junta en el puente de diciembre, la Navidad y el Carnaval.</span></li>
-    <li><span class="eti">Los viernes · 15 minutos</span><span><b>Un audio o una llamada con Néstor.</b> Le cuentas los tres atascos que más has visto y él te dice qué ha cambiado en el juego.</span></li>
+    <li><span class="eti">A ratos, desde el móvil</span><span><b>Mensajes, llamadas, audios y tus vídeos.</b> Casi todo se hace desde donde estés. Lo presencial se junta en el puente de diciembre, la Navidad y el Carnaval.</span></li>
+    <li><span class="eti">Los viernes · 15 minutos</span><span><b>Un audio o una llamada con Néstor.</b> Le cuentas los tres atascos que más has visto, él te dice qué ha cambiado en el juego y te pasa los trozos para tus vídeos.</span></li>
   </ul>
-  <p class="regla"><b>Vives entre los dos sitios donde está tu gente.</b> En Madrid tienes cerca a quienes se fueron del pueblo; en Guareña, a los vecinos y al Ayuntamiento. El plan usa las dos cosas y cabe en unas cuatro horas en una semana normal. Si una semana no puedes, lo importante pasa a la siguiente y el plan sigue. Las tareas de Guareña no caducan: se hacen la próxima vez que bajes.</p>
+  <p class="regla"><b>Vives entre los dos sitios donde está tu gente.</b> En Madrid tienes cerca a quienes se fueron del pueblo; en Guareña, a los vecinos y al Ayuntamiento. El plan usa las dos cosas y cabe en unas cinco horas en una semana normal, con los vídeos. Si una semana no puedes, lo importante pasa a la siguiente y el plan sigue. Las tareas de Guareña no caducan: se hacen la próxima vez que bajes.</p>
 </section>
 
 <section class="bloque" id="semanas" aria-labelledby="h-semanas">
@@ -334,8 +344,9 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
             <h4>Tus tareas</h4>
             <ul class="tareas">
               <li><label><input type="checkbox" id="w1c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Escribe tu lista de 30: treinta personas a las que conoces de verdad, con su móvil. Más o menos la mitad, viviendo en Guareña; la otra mitad, fuera. Vale en las notas del móvil: nombre, si vive dentro o fuera y cuál es su calle.<small class="dato">Desde donde estés · 40 min</small></span></label></li>
-              <li><label><input type="checkbox" id="w1x1" data-t="a"><span><b class="marca">Si puedes</b>Abre un canal de WhatsApp de 388 Pueblos. Una sola red, la que ya usa tu gente; las demás pueden esperar.<small class="dato">Desde el móvil · 20 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w1x1" data-t="a"><span><b class="marca">Si puedes</b>Abre TikTok e Instagram de 388 Pueblos, y un canal de WhatsApp para tu gente. Las tres con el mismo nombre.<small class="dato">Desde el móvil · 30 min</small></span></label></li>
               <li><label><input type="checkbox" id="w1x2" data-t="a"><span><b class="marca">Si puedes</b>Elige con Néstor el dominio propio y un correo de contacto.<small class="dato">Una llamada · 15 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w1x3" data-t="a"><span><b class="marca">Si puedes</b>Una tarde, mira vídeos de marcas que hablan como la gente joven (KFC España es tu ejemplo) y apunta diez formatos que podrías hacer con el juego: memes, «POV», retos, reacciones.<small class="dato">Desde el móvil · 1 h</small></span></label></li>
             </ul>
           </div>
           <div class="carril prod">
@@ -359,6 +370,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
             <h4>Tus tareas</h4>
             <ul class="tareas">
               <li><label><input type="checkbox" id="w2c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Tres sesiones de observación, estés donde estés: en Madrid, con gente de Guareña que vive fuera; en el pueblo, con vecinos. Les pasas el enlace, no explicas nada y miras. El guion está más abajo.<small class="dato">En persona o por videollamada · 20 min cada una</small></span></label></li>
+              <li><label><input type="checkbox" id="w2r" data-t="a"><span><b class="marca">Hábito</b>Tus dos primeros vídeos, con los dos formatos que más te hayan gustado. Los trozos de juego te los pasa Néstor; la gracia la pones tú.<small class="dato">Desde el móvil · 1 h</small></span></label></li>
               <li><label><input type="checkbox" id="w2x1" data-t="a"><span><b class="marca">Si puedes</b>Busca dos cómplices en Guareña: dos personas de confianza que estén allí cuando tú no estés, para colgar un cartel, probar algo o contarte lo que se comenta.<small class="dato">Desde el móvil · 20 min</small></span></label></li>
               <li><label><input type="checkbox" id="w2x2" data-t="a"><span><b class="marca">Si puedes</b>Pide a una persona mayor de tu familia o de tu calle una historia del pueblo: un apodo, un oficio, un sitio que ya no existe. Con su permiso, grábala en un audio. Será una misión del juego.<small class="dato">Una llamada o una visita · 30 min</small></span></label></li>
             </ul>
@@ -369,6 +381,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
               <li><label><input type="checkbox" id="s2p1" data-t="p"><span>Botón «Cuéntanos qué ha fallado» dentro del juego y aviso claro cuando no carga.</span></label></li>
               <li><label><input type="checkbox" id="s2p2" data-t="p"><span>Enlace directo a una calle concreta, para mandar a cada persona la suya.</span></label></li>
               <li><label><input type="checkbox" id="s2p3" data-t="p"><span>Borrador jugable de la primera misión.</span></label></li>
+              <li><label><input type="checkbox" id="s2p4" data-t="p"><span>Los primeros trozos de juego en vertical para tus vídeos.</span></label></li>
             </ul>
           </div>
         </div>
@@ -387,7 +400,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
             <ul class="tareas">
               <li><label><input type="checkbox" id="w3c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Manda el enlace a las diez primeras personas de tu lista, una a una por WhatsApp y cada una con su calle. El mensaje está en los guiones, listo para copiar. Al final, pregunta a cada una a quién se lo mandaría: así la lista crece sola.<small class="dato">Desde el móvil · 40 min</small></span></label></li>
               <li><label><input type="checkbox" id="w3x1" data-t="a"><span><b class="marca">Si estás en el pueblo</b>Aprovecha el puente para ver jugar a tres vecinos en persona: en casa, en el bar o donde surja.<small class="dato">En Guareña · 1 h</small></span></label></li>
-              <li><label><input type="checkbox" id="w3x2" data-t="a"><span><b class="marca">Si puedes</b>Publica en el canal un clip de veinte segundos por una calle reconocible, con la pregunta «¿Sabes qué calle es?». El vídeo te lo pasa Néstor.<small class="dato">Desde el móvil · 10 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w3r" data-t="a"><span><b class="marca">Hábito</b>Tus dos vídeos de la semana. Uno puede ser «¿Sabes qué calle es?»: diez segundos por una calle y la respuesta en los comentarios. En la descripción, el enlace que te pase Néstor para esa red.<small class="dato">Desde el móvil · 1 h</small></span></label></li>
             </ul>
           </div>
           <div class="carril prod">
@@ -396,7 +409,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
               <li><label><input type="checkbox" id="s3p1" data-t="p"><span>Primera misión publicada, con su sello en el pasaporte.</span></label></li>
               <li><label><input type="checkbox" id="s3p2" data-t="p"><span>Primera versión de la carga ligera en el móvil: una calle en menos de diez segundos.</span></label></li>
               <li><label><input type="checkbox" id="s3p3" data-t="p"><span>Coches con licencia limpia, sin los del mod.</span></label></li>
-              <li><label><input type="checkbox" id="s3p4" data-t="p"><span>Clips cortos de calles, listos para que los publiques.</span></label></li>
+              <li><label><input type="checkbox" id="s3p4" data-t="p"><span>Trozos de juego en vertical cada semana para tus vídeos, y un enlace con su etiqueta para cada red.</span></label></li>
             </ul>
           </div>
         </div>
@@ -413,6 +426,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
             <ul class="tareas">
               <li><label><input type="checkbox" id="w4c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Pide cita en el Ayuntamiento de Guareña, con alcaldía o con la concejalía de cultura, juventud o turismo, para un día de Navidad en que vayas a estar en el pueblo: del 21 al 23 o del 28 al 30 de diciembre. El correo está en los guiones. Si el viernes no han contestado, llama.<small class="dato">Desde donde estés · 20 min</small></span></label></li>
               <li><label><input type="checkbox" id="w4h" data-t="a"><span><b class="marca">Hábito</b>Tus diez mensajes de la semana: las diez personas siguientes de la lista, una a una y con su calle.<small class="dato">Desde el móvil · 40 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w4r" data-t="a"><span><b class="marca">Hábito</b>Tus dos vídeos de la semana. Mira qué funcionó la semana pasada (lo que se guarda y se comparte, más que los «me gusta») y repítelo.<small class="dato">Desde el móvil · 1 h</small></span></label></li>
               <li><label><input type="checkbox" id="w4x1" data-t="a"><span><b class="marca">Si puedes</b>Decide con Néstor quién va a facturar si el Ayuntamiento dice que sí. Una asesoría os lo aclara en una cita.<small class="dato">Una llamada · 20 min</small></span></label></li>
             </ul>
           </div>
@@ -438,6 +452,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
             <ul class="tareas">
               <li><label><input type="checkbox" id="w5c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Elige sitio y día para tu tarde de «Guareña en la pantalla», entre el 26 y el 30 de diciembre. Empieza en pequeño: un bar con tele o un salón, y diez o quince personas de tu lista, cada una con alguien que viva fuera.<small class="dato">Desde el móvil · 45 min</small></span></label></li>
               <li><label><input type="checkbox" id="w5h" data-t="a"><span><b class="marca">Hábito</b>Tus diez mensajes de la semana, esta vez con la invitación a la tarde.<small class="dato">Desde el móvil · 40 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w5r" data-t="a"><span><b class="marca">Hábito</b>Tus dos vídeos de la semana. Uno anuncia tu tarde de Navidad.<small class="dato">Desde el móvil · 1 h</small></span></label></li>
               <li><label><input type="checkbox" id="w5x1" data-t="a"><span><b class="marca">Si puedes</b>Avisa a la radio local o a un grupo de Facebook del pueblo de que el juego existe y de la tarde. El texto te lo pasa Néstor.<small class="dato">Desde el móvil · 15 min</small></span></label></li>
             </ul>
           </div>
@@ -465,6 +480,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
             <h4>Tus tareas</h4>
             <ul class="tareas">
               <li><label><input type="checkbox" id="w6c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Tu tarde, el día que hayas elegido: el juego en la pantalla, cada persona busca su calle y entra desde su móvil con el QR. Con diez personas ya es un éxito. Si cae el 28, el 29 o el 30, marca esta casilla ese día.<small class="dato">En Guareña · 2 h</small></span></label></li>
+              <li><label><input type="checkbox" id="w6r" data-t="a"><span><b class="marca">Hábito</b>Tus dos vídeos de la semana: las reacciones de la tarde, con permiso, y el reto «Enséñale tu calle a alguien que esté lejos».<small class="dato">Desde el móvil · 1 h</small></span></label></li>
               <li><label><input type="checkbox" id="w6x1" data-t="a"><span><b class="marca">Si puedes</b>Graba dos o tres reacciones de gente reconociendo su casa, con su permiso. Serán los mejores clips de toda la campaña.<small class="dato">En Guareña · durante la tarde</small></span></label></li>
               <li><label><input type="checkbox" id="w6x2" data-t="a"><span><b class="marca">Si puedes</b>Mira jugar a dos personas a las que conozcas menos: alguien del bar, una vecina, un primo de fuera.<small class="dato">En Guareña · 40 min</small></span></label></li>
             </ul>
@@ -489,6 +505,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
             <h4>Tus tareas</h4>
             <ul class="tareas">
               <li><label><input type="checkbox" id="w7c" data-t="a" data-clave><span><b class="clave">Lo importante</b>La reunión en el Ayuntamiento, el día que te la hayan dado: cinco minutos de juego en directo, lo que has visto estas semanas y una pregunta. El guion está más abajo. Sal con un siguiente paso y una fecha. Si te citan otra semana, marca esta casilla cuando la hagas.<small class="dato">En Guareña · 1 h</small></span></label></li>
+              <li><label><input type="checkbox" id="w7r" data-t="a"><span><b class="marca">Hábito</b>Tus dos vídeos de la semana. Hay más gente en casa mirando el móvil: buena semana para sumarte a una tendencia.<small class="dato">Desde el móvil · 1 h</small></span></label></li>
               <li><label><input type="checkbox" id="w7x1" data-t="a"><span><b class="marca">Si puedes</b>Antes de que se vayan, pide a cinco personas de las que viven fuera que reenvíen el enlace al grupo de gente de Guareña de su ciudad.<small class="dato">En persona o por WhatsApp · 20 min</small></span></label></li>
             </ul>
           </div>
@@ -512,6 +529,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
             <h4>Tus tareas</h4>
             <ul class="tareas">
               <li><label><input type="checkbox" id="w8c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Manda la encuesta de tres preguntas a quienes han jugado. Está en los guiones, lista para copiar.<small class="dato">Desde el móvil · 20 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w8r" data-t="a"><span><b class="marca">Hábito</b>Un solo vídeo esta semana: lo mejor de la Navidad dentro del juego.<small class="dato">Desde el móvil · 30 min</small></span></label></li>
               <li><label><input type="checkbox" id="w8x1" data-t="a"><span><b class="marca">Si puedes</b>Rellena el marcador de enero y repásalo con Néstor: qué ha funcionado y qué cambiáis.<small class="dato">Una llamada · 30 min</small></span></label></li>
             </ul>
           </div>
@@ -539,7 +557,9 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
             <ul class="tareas">
               <li><label><input type="checkbox" id="w9c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Entrega al Ayuntamiento la propuesta de una página, con el precio y lo que recibe el pueblo, y pide un sí o un no antes de Carnaval. Néstor te la deja redactada: tú la repasas y la envías.<small class="dato">Desde donde estés · 30 min</small></span></label></li>
               <li><label><input type="checkbox" id="w9h" data-t="a"><span><b class="marca">Hábito</b>Tus diez mensajes de la semana.<small class="dato">Desde el móvil · 40 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w9r" data-t="a"><span><b class="marca">Hábito</b>Tus dos vídeos de la semana. Empieza la cuenta atrás del Carnaval.<small class="dato">Desde el móvil · 1 h</small></span></label></li>
               <li><label><input type="checkbox" id="w9x1" data-t="a"><span><b class="marca">Si puedes</b>Habla con alguien de una peña de Carnaval: qué les gustaría que pasara dentro del juego durante la fiesta.<small class="dato">Una llamada · 20 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w9x2" data-t="a"><span><b class="marca">Si puedes</b>Escribe a dos creadores de Extremadura con público joven (humor, pueblos, videojuegos) y ofréceles jugar en directo antes de Carnaval. Néstor les deja el juego listo.<small class="dato">Desde el móvil · 30 min</small></span></label></li>
             </ul>
           </div>
           <div class="carril prod">
@@ -563,6 +583,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
             <ul class="tareas">
               <li><label><input type="checkbox" id="w10c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Elige el segundo pueblo con los datos de la web: el vecino de Guareña con más votos y apuntados. Busca allí a una persona que lo quiera mover y habla con ella.<small class="dato">Desde el móvil · 45 min</small></span></label></li>
               <li><label><input type="checkbox" id="w10h" data-t="a"><span><b class="marca">Hábito</b>Tus diez mensajes de la semana.<small class="dato">Desde el móvil · 40 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w10r" data-t="a"><span><b class="marca">Hábito</b>Tus dos vídeos de la semana. Uno, con el segundo pueblo: «¿Cuál despertamos ahora?».<small class="dato">Desde el móvil · 1 h</small></span></label></li>
               <li><label><input type="checkbox" id="w10x1" data-t="a"><span><b class="marca">Si puedes</b>Mira jugar a tres personas nuevas, para comprobar que los atascos de noviembre ya no están.<small class="dato">En persona o por videollamada · 20 min cada una</small></span></label></li>
             </ul>
           </div>
@@ -588,6 +609,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
             <ul class="tareas">
               <li><label><input type="checkbox" id="w11c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Ensayo de Carnaval: cinco personas dentro del juego a la vez, una tarde, contigo. Apunta lo que falle y pásaselo a Néstor esa misma noche.<small class="dato">Desde donde estés · 1 h</small></span></label></li>
               <li><label><input type="checkbox" id="w11h" data-t="a"><span><b class="marca">Hábito</b>Tus diez mensajes de la semana, con la invitación al Carnaval dentro del juego: día y hora.<small class="dato">Desde el móvil · 40 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w11r" data-t="a"><span><b class="marca">Hábito</b>Tus dos vídeos de la semana, con el día y la hora de la cita de Carnaval dentro del juego.<small class="dato">Desde el móvil · 1 h</small></span></label></li>
               <li><label><input type="checkbox" id="w11x1" data-t="a"><span><b class="marca">Si puedes</b>Pide a tus cómplices que cuelguen cinco carteles con QR en bares y comercios, y a tres personas que hagan de anfitrionas el día de la cita: estar dentro y recibir a quien entre.<small class="dato">Desde el móvil · 30 min</small></span></label></li>
             </ul>
           </div>
@@ -613,6 +635,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
             <h4>Tus tareas</h4>
             <ul class="tareas">
               <li><label><input type="checkbox" id="w12c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Una cita con hora dentro del juego, el día grande del Carnaval. Tú y tus anfitriones, dentro, recibiendo a quien entre.<small class="dato">Desde donde estés · 1 h</small></span></label></li>
+              <li><label><input type="checkbox" id="w12r" data-t="a"><span><b class="marca">Hábito</b>El Carnaval dentro del juego, en vídeos cortos: los disfraces, la cita y quien llega desde fuera.<small class="dato">Desde el móvil · 1 h</small></span></label></li>
               <li><label><input type="checkbox" id="w12x1" data-t="a"><span><b class="marca">Si puedes</b>Una segunda cita otro día, para quien no pudo ir a la primera.<small class="dato">Desde donde estés · 1 h</small></span></label></li>
               <li><label><input type="checkbox" id="w12x2" data-t="a"><span><b class="marca">Si estás en el pueblo</b>Una tarde con el QR en la calle: que la gente entre desde su móvil y te diga qué le parece. Graba alguna reacción, con permiso.<small class="dato">En Guareña · 2 h</small></span></label></li>
             </ul>
@@ -635,8 +658,9 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
           <div class="carril">
             <h4>Tus tareas</h4>
             <ul class="tareas">
-              <li><label><input type="checkbox" id="w13c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Revisión con Néstor de las cuatro metas, altura por altura, y decisión: seguir creciendo, dar otra vuelta o cambiar de rumbo. Las reglas están al final.<small class="dato">Una llamada · 1 h</small></span></label></li>
+              <li><label><input type="checkbox" id="w13c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Revisión con Néstor de las cinco metas, altura por altura, y decisión: seguir creciendo, dar otra vuelta o cambiar de rumbo. Las reglas están al final.<small class="dato">Una llamada · 1 h</small></span></label></li>
               <li><label><input type="checkbox" id="w13x1" data-t="a"><span><b class="marca">Si puedes</b>Mensaje de gracias a toda tu lista, con los números.<small class="dato">Desde el móvil · 20 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w13x2" data-t="a"><span><b class="marca">Si puedes</b>Un último vídeo con los números de estas doce semanas y las gracias.<small class="dato">Desde el móvil · 30 min</small></span></label></li>
             </ul>
           </div>
           <div class="carril prod">
@@ -661,6 +685,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
         <li><label for="m-lis-1">Nombres en tu lista<small>meta 30</small></label><input type="number" inputmode="numeric" min="0" id="m-lis-1" data-m></li>
         <li><label for="m-obs-1">Personas vistas jugar<small>acumulado · meta 3</small></label><input type="number" inputmode="numeric" min="0" id="m-obs-1" data-m></li>
         <li><label for="m-jug-1">Jugadores<small>acumulado · suelo 5 · meta 10</small></label><input type="number" inputmode="numeric" min="0" id="m-jug-1" data-m></li>
+        <li><label for="m-vid-1">Vídeos publicados<small>meta 2</small></label><input type="number" inputmode="numeric" min="0" id="m-vid-1" data-m></li>
       </ul>
     </article>
     <article class="hito">
@@ -669,6 +694,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
         <li><label for="m-msg-2">Mensajes uno a uno<small>acumulado · suelo 20 · meta 30</small></label><input type="number" inputmode="numeric" min="0" id="m-msg-2" data-m></li>
         <li><label for="m-obs-2">Personas vistas jugar<small>acumulado · suelo 3 · meta 6</small></label><input type="number" inputmode="numeric" min="0" id="m-obs-2" data-m></li>
         <li><label for="m-jug-2">Jugadores<small>acumulado · suelo 20 · meta 40</small></label><input type="number" inputmode="numeric" min="0" id="m-jug-2" data-m></li>
+        <li><label for="m-vid-2">Vídeos publicados<small>acumulado · suelo 6 · meta 8</small></label><input type="number" inputmode="numeric" min="0" id="m-vid-2" data-m></li>
         <li><label for="m-d7-2">Vuelven a los 7 días, %<small>el primer dato, sea el que sea</small></label><input type="number" inputmode="decimal" min="0" max="100" id="m-d7-2" data-m></li>
         <li><label for="m-ins-2">Citas con fecha<small>meta 1: el Ayuntamiento</small></label><input type="number" inputmode="numeric" min="0" id="m-ins-2" data-m></li>
       </ul>
@@ -679,6 +705,8 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
         <li><label for="m-msg-3">Mensajes uno a uno<small>acumulado · suelo 20 · meta 30</small></label><input type="number" inputmode="numeric" min="0" id="m-msg-3" data-m></li>
         <li><label for="m-obs-3">Personas vistas jugar<small>acumulado · suelo 5 · meta 8</small></label><input type="number" inputmode="numeric" min="0" id="m-obs-3" data-m></li>
         <li><label for="m-jug-3">Jugadores<small>acumulado · suelo 50 · meta 120</small></label><input type="number" inputmode="numeric" min="0" id="m-jug-3" data-m></li>
+        <li><label for="m-vid-3">Vídeos publicados<small>acumulado · suelo 10 · meta 13</small></label><input type="number" inputmode="numeric" min="0" id="m-vid-3" data-m></li>
+        <li><label for="m-red-3">Llegan desde las redes<small>jugadores, según la medición</small></label><input type="number" inputmode="numeric" min="0" id="m-red-3" data-m></li>
         <li><label for="m-d7-3">Vuelven a los 7 días, %<small>suelo 10 · meta 15</small></label><input type="number" inputmode="decimal" min="0" max="100" id="m-d7-3" data-m></li>
         <li><label for="m-ins-3">Instituciones<small>con siguiente paso · meta 1</small></label><input type="number" inputmode="numeric" min="0" id="m-ins-3" data-m></li>
       </ul>
@@ -689,6 +717,8 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
         <li><label for="m-msg-4">Mensajes uno a uno<small>acumulado · suelo 40 · meta 60</small></label><input type="number" inputmode="numeric" min="0" id="m-msg-4" data-m></li>
         <li><label for="m-obs-4">Personas vistas jugar<small>acumulado · suelo 6 · meta 10</small></label><input type="number" inputmode="numeric" min="0" id="m-obs-4" data-m></li>
         <li><label for="m-jug-4">Jugadores<small>suelo 100 · meta 300 · sueño 1.000</small></label><input type="number" inputmode="numeric" min="0" id="m-jug-4" data-m></li>
+        <li><label for="m-vid-4">Vídeos publicados<small>acumulado · suelo 20</small></label><input type="number" inputmode="numeric" min="0" id="m-vid-4" data-m></li>
+        <li><label for="m-red-4">Llegan desde las redes<small>jugadores · meta 100 · sueño 1.000</small></label><input type="number" inputmode="numeric" min="0" id="m-red-4" data-m></li>
         <li><label for="m-d7-4">Vuelven a los 7 días, %<small>suelo 10 · meta 15 · sueño 20</small></label><input type="number" inputmode="decimal" min="0" max="100" id="m-d7-4" data-m></li>
         <li><label for="m-ins-4">Instituciones<small>con siguiente paso · suelo 1 · meta 2</small></label><input type="number" inputmode="numeric" min="0" id="m-ins-4" data-m></li>
         <li><label for="m-eur-4">Euros comprometidos<small>por escrito · la meta es que no sea cero</small></label><input type="number" inputmode="numeric" min="0" id="m-eur-4" data-m></li>
@@ -743,6 +773,22 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
       <button type="button" class="copiar" id="copiar-enc" data-copia="txt-enc">Copiar la encuesta</button>
       <p class="nota">Como orientación: si cuatro de cada diez contestan «muy decepcionado», hay algo de verdad. Si son menos de dos, falta el motivo para volver.</p>
     </article>
+    <article class="guion">
+      <h3>Redes para gente joven</h3>
+      <blockquote>Que no parezca un anuncio: que parezca alguien de Guareña con gracia.</blockquote>
+      <p>Habla como hablas con tus amigos. Humor, memes y reaccionar rápido a lo que está pasando, como hace KFC: lo que funciona es el tono, no el presupuesto. Ideas para empezar:</p>
+      <ol>
+        <li>«¿Sabes qué calle es?»: diez segundos por una calle y la respuesta en los comentarios.</li>
+        <li>«POV: vuelves a Guareña en Navidad y…», con el juego.</li>
+        <li>Le preguntas algo a un vecino del juego, que contesta con IA, y grabas lo que dice.</li>
+        <li>«Cosas que solo entiendes si eres de Guareña», en versión videojuego.</li>
+        <li>Carrera de la plaza a la iglesia: reta a tus amigos a hacerla más rápido.</li>
+        <li>Tu calle en el juego y tu calle de verdad, una al lado de la otra.</li>
+        <li>Un audio que esté de moda, con imágenes del juego.</li>
+        <li>Contestar a un comentario con otro vídeo.</li>
+      </ol>
+      <p class="nota">Cada vídeo, con el enlace que te pase Néstor para esa red: así se sabe de dónde llega la gente. Solo música de la biblioteca de la propia red, nada de marcas ni de otros videojuegos, y nadie menor de edad en un vídeo sin permiso de su familia. Fíjate en lo que se guarda y se comparte más que en los «me gusta».</p>
+    </article>
   </div>
 </section>
 
@@ -780,6 +826,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
     <div class="grupo">
       <h3>Crecer de pueblo en pueblo</h3>
       <ul class="mejoras">
+        <li><span class="cuando">S2</span><p><b>Trozos de juego en vertical para redes, cada semana</b><span>Lo que Annie convierte en memes y retos para gente joven.</span></p></li>
         <li><span class="cuando">S5</span><p><b>Página de pueblo con contador de vecinos y botón de WhatsApp</b><span>Hace de «Despierta tu pueblo» el motor de crecimiento.</span></p></li>
         <li><span class="cuando">S5</span><p><b>Clasificación por comarcas e invitaciones con nombre</b><span>Es la primera liga, sin tocar el juego, y mide quién invita.</span></p></li>
         <li><span class="cuando">S9</span><p><b>Modo fiesta: programa del día, punto de encuentro y foto de grupo</b><span>Lo necesita la primera «fiesta a la vez», en Carnaval.</span></p></li>
@@ -798,7 +845,7 @@ h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
       </ul>
     </div>
   </div>
-  <p class="regla"><b>Congelado hasta Carnaval:</b> más realismo gráfico, más calles hechas a mano, nuevas fases de multijugador, vecinos con IA más listos y los pueblos del 3 al 388. Nada de eso cambia las cuatro metas.</p>
+  <p class="regla"><b>Congelado hasta Carnaval:</b> más realismo gráfico, más calles hechas a mano, nuevas fases de multijugador, vecinos con IA más listos y los pueblos del 3 al 388. Nada de eso cambia las cinco metas.</p>
 </section>
 
 <section class="bloque" id="decision" aria-labelledby="h-decision">
