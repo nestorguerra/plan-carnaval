@@ -1,0 +1,1052 @@
+<title>Plan de Annie hasta Carnaval</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* Web pensada primero para el móvil de Annie, con la identidad de 388 Pueblos: cal, tinta, añil y sodio.
+   Arriba, un panel «Hoy» con la semana en curso y una barra fija para saltar entre secciones. Cada semana es
+   un bloque plegable con su sello de pasaporte; la semana actual llega abierta. En pantallas anchas las
+   tareas y el producto se ponen en dos carriles. */
+:root {
+  --fondo: #eef0ec;
+  --papel: #f8f9f6;
+  --banda: #e2e5df;
+  --tinta: #0c1122;
+  --tinta-2: #4f587a;
+  --linea: rgba(12, 17, 34, 0.16);
+  --anil: #34489c;
+  --sodio: #ffa94d;
+  --sobre-sodio: #1a1203;
+  --almagre: #b23f24;
+  --vega: #2f6f55;
+  --panel: #0c1122;
+  --sobre-panel: #eef0ec;
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --f-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fondo: #070a14;
+    --papel: #0d1326;
+    --banda: #151d36;
+    --tinta: #eef0ec;
+    --tinta-2: #9ba4c8;
+    --linea: rgba(186, 198, 255, 0.18);
+    --anil: #8fa2ff;
+    --sodio: #ffa94d;
+    --sobre-sodio: #1a1203;
+    --almagre: #f08a6a;
+    --vega: #8fc7ab;
+    --panel: #151d36;
+    --sobre-panel: #eef0ec;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --fondo: #070a14;
+  --papel: #0d1326;
+  --banda: #151d36;
+  --tinta: #eef0ec;
+  --tinta-2: #9ba4c8;
+  --linea: rgba(186, 198, 255, 0.18);
+  --anil: #8fa2ff;
+  --sodio: #ffa94d;
+  --sobre-sodio: #1a1203;
+  --almagre: #f08a6a;
+  --vega: #8fc7ab;
+    --panel: #151d36;
+    --sobre-panel: #eef0ec;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  background: var(--fondo);
+  color: var(--tinta);
+  font: 400 1rem/1.55 var(--f-display);
+  -webkit-text-size-adjust: 100%;
+  padding-block: 1.5rem 4rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--fondo); }
+.hoja { max-width: 60rem; margin-inline: auto; display: flex; flex-direction: column; gap: 2.75rem; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, blockquote { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+h1, h2, h3 { text-wrap: balance; }
+a { color: var(--anil); text-underline-offset: 0.18em; }
+a:focus-visible, input:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--anil); outline-offset: 2px; }
+section[id], details[id] { scroll-margin-top: 4.5rem; }
+
+.eti { font: 500 0.72rem/1.4 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--tinta-2); }
+
+/* Cabecera */
+.cabecera { display: flex; flex-direction: column; gap: 0.9rem; }
+h1 { font: 800 clamp(2.2rem, 10vw, 3.6rem)/1.02 var(--f-display); letter-spacing: -0.02em; }
+h1 em { font: italic 400 1.06em/1 var(--f-serif); letter-spacing: 0; color: var(--anil); }
+.entrada { max-width: 42rem; font-size: 1.05rem; }
+.entrada-mas { max-width: 42rem; color: var(--tinta-2); font-size: 0.95rem; }
+h2 { font: 700 1.5rem/1.15 var(--f-display); letter-spacing: -0.01em; }
+.bloque { display: flex; flex-direction: column; gap: 1.1rem; }
+.bloque > p { max-width: 42rem; }
+
+/* Barra fija */
+.barra { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 0.25rem; background: var(--fondo); border-block: 1px solid var(--linea); margin-block: -1.25rem; }
+.barra a { font: 500 0.68rem/1 var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--tinta); text-decoration: none; padding: 1.05rem 0.35rem; }
+.barra a:hover { color: var(--anil); }
+
+/* Hoy */
+.hoy { background: var(--panel); color: var(--sobre-panel); padding: 1.25rem 1.15rem 1.35rem; display: flex; flex-direction: column; gap: 0.8rem; }
+.hoy .eti { color: var(--sodio); }
+.hoy h2 { font-size: 1.7rem; }
+.pista { height: 0.6rem; border: 1px solid var(--sobre-panel); }
+.pista span { display: block; height: 100%; width: 0; background: var(--sodio); }
+#avance { font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.boton { align-self: flex-start; display: inline-flex; align-items: center; min-height: 2.9rem; padding: 0.6rem 1.1rem; background: var(--sodio); color: var(--sobre-sodio); font-weight: 700; text-decoration: none; }
+.boton:focus-visible { outline-color: var(--sobre-panel); }
+#estado { color: var(--tinta-2); font-size: 0.88rem; }
+
+/* Metas */
+.alturas { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.75rem 2.25rem; }
+.altura { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; padding-top: 0.8rem; border-top: 2px solid var(--tinta); }
+.altura h3 { font: 700 1.15rem/1.25 var(--f-display); }
+.altura .d { color: var(--tinta-2); font-size: 0.92rem; line-height: 1.4; }
+.altura dl { display: flex; flex-direction: column; margin-top: 0.45rem; }
+.altura dl div { display: grid; grid-template-columns: 4rem minmax(0, 1fr); gap: 0.75rem; align-items: baseline; padding-block: 0.55rem; border-top: 1px solid var(--linea); }
+.altura dt { font: 500 0.7rem/1.4 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--tinta-2); }
+.altura dd { line-height: 1.3; font-variant-numeric: tabular-nums; }
+.altura .meta dt { color: var(--tinta); }
+.altura .meta dd { font-weight: 700; font-size: 1.1rem; }
+.altura .sueno dd { font: italic 400 1.25rem/1.2 var(--f-serif); color: var(--anil); }
+.altura.num dd { font: 600 1.25rem/1.1 var(--f-display); letter-spacing: -0.01em; }
+.altura.num .meta dd { font-weight: 800; font-size: 1.9rem; }
+.altura.num .sueno dd { font: italic 400 1.7rem/1.1 var(--f-serif); letter-spacing: 0; }
+
+/* Ritmo */
+.ritmo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.1rem 1.5rem; }
+.ritmo li { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.regla { background: var(--banda); padding: 1rem 1.1rem; max-width: 42rem; }
+
+/* Calendario */
+.fases { display: grid; grid-template-columns: minmax(0, 1fr); }
+.fases a { display: flex; flex-direction: column; gap: 0.1rem; padding-block: 0.7rem; border-top: 1px solid var(--linea); text-decoration: none; color: var(--tinta); font-weight: 600; line-height: 1.3; }
+.fases a:hover { color: var(--anil); }
+
+/* Semanas */
+.plan { display: flex; flex-direction: column; }
+.fase { display: flex; flex-direction: column; gap: 0.15rem; padding-block: 2rem 0.8rem; }
+.fase .eti { color: var(--almagre); }
+.fase h3 { font: 700 1.25rem/1.2 var(--f-display); }
+.semana { border-top: 1px solid var(--linea); }
+.semana > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 2.9rem minmax(0, 1fr) auto; gap: 0.75rem; align-items: center; padding-block: 0.9rem; }
+.semana > summary::-webkit-details-marker { display: none; }
+.sem { font: 800 1.45rem/1 var(--f-display); letter-spacing: -0.02em; }
+.resumen { display: flex; flex-direction: column; align-items: flex-start; gap: 0.2rem; min-width: 0; }
+.resumen .fechas { font: 500 0.72rem/1.35 var(--f-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--tinta-2); }
+.resumen .tit { font-weight: 700; font-size: 1.08rem; line-height: 1.25; }
+.resumen .tit::after { content: "+"; margin-left: 0.45rem; font: 500 1rem/1 var(--f-mono); color: var(--anil); }
+.semana[open] .resumen .tit::after { content: "\2212"; }
+.ahora { font: 500 0.64rem/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; background: var(--sodio); color: var(--sobre-sodio); padding: 0.28rem 0.42rem; }
+.sello { width: 3.3rem; height: 3.3rem; border-radius: 50%; border: 1.5px dashed var(--tinta-2); color: var(--tinta-2); display: grid; place-items: center; transform: rotate(-8deg); }
+.sello b { font: 500 0.66rem/1 var(--f-mono); letter-spacing: 0.04em; text-transform: uppercase; }
+.semana.sellada .sello { border: 2px solid var(--anil); color: var(--anil); box-shadow: inset 0 0 0 3px var(--fondo), inset 0 0 0 4px var(--anil); }
+.semana[open] > summary { padding-bottom: 0.5rem; }
+.dentro { display: flex; flex-direction: column; gap: 1.1rem; padding-bottom: 1.6rem; }
+.carriles { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem 2rem; }
+.carril { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
+.carril h4 { font: 500 0.72rem/1.4 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--tinta-2); }
+.carril.prod { background: var(--banda); padding: 0.9rem 1rem 1rem; font-size: 0.94rem; }
+.tareas { display: flex; flex-direction: column; }
+.tareas label { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.75rem; align-items: start; cursor: pointer; padding-block: 0.5rem; }
+.tareas input { width: 1.4rem; height: 1.4rem; margin: 0.08rem 0 0; accent-color: var(--anil); cursor: pointer; }
+.tareas input:checked + span { color: var(--tinta-2); text-decoration: line-through; text-decoration-color: var(--linea); }
+.clave, .marca { display: inline-block; font: 500 0.64rem/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 0.22rem 0.38rem; margin-right: 0.4rem; vertical-align: 0.12em; text-decoration: none; }
+.clave { background: var(--sodio); color: var(--sobre-sodio); }
+.marca { border: 1px solid var(--tinta-2); color: var(--tinta-2); padding: calc(0.22rem - 1px) calc(0.38rem - 1px); }
+.dato { display: inline-block; width: 100%; margin-top: 0.3rem; font: 500 0.7rem/1.4 var(--f-mono); letter-spacing: 0.03em; color: var(--tinta-2); text-decoration: none; }
+.cierre { font-size: 0.94rem; padding-top: 0.8rem; border-top: 1px dotted var(--linea); }
+.cierre .eti { display: block; color: var(--vega); }
+
+/* Marcador */
+.hitos { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 2rem 2.25rem; }
+.hito { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; padding-top: 0.8rem; border-top: 2px solid var(--tinta); }
+.hito h3 { font: 700 1.1rem/1.25 var(--f-display); display: flex; flex-direction: column; gap: 0.1rem; }
+.hito li { display: grid; grid-template-columns: minmax(0, 1fr) 5.6rem; gap: 0.75rem; align-items: center; padding-block: 0.55rem; border-top: 1px solid var(--linea); }
+.hito label { display: flex; flex-direction: column; font-weight: 600; line-height: 1.3; }
+.hito label small { font: 500 0.7rem/1.5 var(--f-mono); letter-spacing: 0.03em; color: var(--tinta-2); }
+.hito input { width: 100%; min-height: 2.75rem; font: 600 1.05rem/1.2 var(--f-display); font-variant-numeric: tabular-nums; color: var(--tinta); background: var(--papel); border: 1px solid var(--tinta-2); border-radius: 0; padding: 0.4rem 0.55rem; }
+
+/* Guiones */
+.guiones { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 2rem 2.5rem; }
+.guion { display: flex; flex-direction: column; gap: 0.7rem; min-width: 0; padding-top: 0.9rem; border-top: 2px solid var(--tinta); }
+.guion h3 { font: 700 1.1rem/1.25 var(--f-display); }
+.guion ol { counter-reset: paso; display: flex; flex-direction: column; gap: 0.5rem; }
+.guion ol li { counter-increment: paso; display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); }
+.guion ol li::before { content: counter(paso); font: 500 0.78rem/1.9 var(--f-mono); color: var(--tinta-2); }
+.guion blockquote { padding: 0.85rem 1rem; background: var(--banda); font: italic 400 1.15rem/1.4 var(--f-serif); }
+.guion .nota { color: var(--tinta-2); font-size: 0.92rem; }
+.copiar { align-self: flex-start; min-height: 2.75rem; padding: 0.5rem 0.9rem; font: 500 0.72rem/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--tinta); background: transparent; border: 1px solid var(--tinta); border-radius: 0; cursor: pointer; }
+.copiar:hover { background: var(--tinta); color: var(--fondo); }
+
+/* Producto */
+.grupo { display: flex; flex-direction: column; }
+.grupo h3 { font: 700 1.05rem/1.3 var(--f-display); padding-block: 0.8rem 0.6rem; border-top: 2px solid var(--tinta); }
+.mejoras li { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr); gap: 0.75rem; padding-block: 0.65rem; border-top: 1px solid var(--linea); }
+.mejoras .cuando { font: 500 0.72rem/1.7 var(--f-mono); letter-spacing: 0.03em; text-transform: uppercase; color: var(--almagre); }
+.mejoras p { display: flex; flex-direction: column; gap: 0.1rem; }
+.mejoras b { font-weight: 600; line-height: 1.35; }
+.mejoras p span { color: var(--tinta-2); font-size: 0.92rem; line-height: 1.4; }
+.grupos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem 2.5rem; }
+
+/* Decisión */
+.decision { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.5rem 2rem; }
+.decision div { display: flex; flex-direction: column; gap: 0.4rem; padding-top: 0.9rem; border-top: 2px solid var(--tinta); min-width: 0; }
+.decision dt { font: 700 1.1rem/1.2 var(--f-display); }
+.decision dd { font-size: 0.95rem; }
+.decision dd + dd { color: var(--tinta-2); }
+
+.pie { color: var(--tinta-2); font-size: 0.86rem; display: flex; flex-direction: column; gap: 0.4rem; max-width: 46rem; padding-top: 1.25rem; border-top: 1px solid var(--linea); }
+
+@media (min-width: 48rem) {
+  body { padding-block: 2.5rem 4rem; }
+  .hoja { gap: 3.5rem; }
+  .barra { justify-content: flex-start; gap: 0 1.5rem; margin-block: -1.5rem; }
+  .barra a { font-size: 0.74rem; }
+  .hoy { padding: 1.75rem 1.75rem 1.9rem; }
+  .alturas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ritmo { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .fases { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 1.25rem; }
+  .semana > summary { grid-template-columns: 4.5rem minmax(0, 1fr) auto; gap: 1rem; padding-block: 1.1rem; }
+  .sem { font-size: 1.9rem; }
+  .resumen .tit { font-size: 1.2rem; }
+  .sello { width: 4rem; height: 4rem; }
+  .dentro { padding-left: 5.5rem; }
+  .carriles { grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); align-items: start; }
+  .grupos { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}
+</style>
+
+<div class="hoja" lang="es">
+
+<header class="cabecera">
+  <p class="eti">388 Pueblos · Plan de validación · 17 nov 2026 – 14 feb 2027</p>
+  <h1>Doce semanas <em>hasta Carnaval</em></h1>
+  <p class="entrada">Annie: este es el plan para comprobar, antes del Carnaval de Guareña (del 6 al 9 de febrero de 2027), si 388 Pueblos tiene futuro. Está hecho a tu medida: una cosa importante cada semana, casi todo desde el móvil, y lo presencial para los días en que ya estás en el pueblo. Tú te ocupas de las personas. Néstor, del producto y de dejarte preparado lo que haya que enviar.</p>
+  <p class="entrada-mas">Todo el plan de un vistazo, semana a semana, en <a href="https://claude.ai/artifact/BBBahXtmdfSGG4FwMfyibP">el diagrama</a>.</p>
+</header>
+
+<nav class="barra" aria-label="Secciones">
+  <a href="#hoy">Hoy</a>
+  <a href="#semanas">Semanas</a>
+  <a href="#marcador">Marcador</a>
+  <a href="#guiones">Guiones</a>
+  <a href="#producto">Producto</a>
+</nav>
+
+<section class="bloque" id="hoy" aria-labelledby="hoy-titulo">
+  <div class="hoy">
+    <p class="eti" id="hoy-eti">Esta semana · 17–22 nov</p>
+    <h2 id="hoy-titulo">Tu lista de 30</h2>
+    <p id="hoy-texto">Esta semana, una sola cosa importante. Hecha esa, la semana queda sellada.</p>
+    <div class="pista" aria-hidden="true"><span id="avance-barra"></span></div>
+    <p id="avance">Semanas selladas: 0 de 13.</p>
+    <a class="boton" id="hoy-ir" href="#s1">Ver esta semana</a>
+  </div>
+  <p id="estado" role="status">Tus marcas se guardan solo en este dispositivo.</p>
+</section>
+
+<section class="bloque" id="metas" aria-labelledby="h-metas">
+  <h2 id="h-metas">Cuatro metas, tres alturas</h2>
+  <p>Cada meta tiene tres alturas para el 9 de febrero. El <b>suelo</b> es lo que hace que estas doce semanas hayan merecido la pena. La <b>meta</b> es a por lo que vamos. El <b>sueño</b> es lo que pasa si todo sale bien: está para apuntar alto, no para exigírtelo.</p>
+  <ul class="alturas">
+    <li class="altura num">
+      <h3>Gente que ha jugado</h3>
+      <p class="d">Personas que han entrado y a las que les ha cargado el juego.</p>
+      <dl>
+        <div><dt>Suelo</dt><dd>100</dd></div>
+        <div class="meta"><dt>Meta</dt><dd>300</dd></div>
+        <div class="sueno"><dt>Sueño</dt><dd>1.000</dd></div>
+      </dl>
+    </li>
+    <li class="altura num">
+      <h3>Gente que vuelve</h3>
+      <p class="d">De cada 100 que juegan, cuántos vuelven en los siete días siguientes.</p>
+      <dl>
+        <div><dt>Suelo</dt><dd>10</dd></div>
+        <div class="meta"><dt>Meta</dt><dd>15</dd></div>
+        <div class="sueno"><dt>Sueño</dt><dd>20</dd></div>
+      </dl>
+    </li>
+    <li class="altura">
+      <h3>El Ayuntamiento de Guareña</h3>
+      <p class="d">Lo que sale de sentarte con ellos.</p>
+      <dl>
+        <div><dt>Suelo</dt><dd>Una reunión hecha y una respuesta clara, sea sí o no</dd></div>
+        <div class="meta"><dt>Meta</dt><dd>Un compromiso por escrito</dd></div>
+        <div class="sueno"><dt>Sueño</dt><dd>Un contrato firmado, con importe</dd></div>
+      </dl>
+    </li>
+    <li class="altura">
+      <h3>El segundo pueblo</h3>
+      <p class="d">El vecino de Guareña que viene después.</p>
+      <dl>
+        <div><dt>Suelo</dt><dd>Elegido, con una persona de allí que lo quiere mover</dd></div>
+        <div class="meta"><dt>Meta</dt><dd>Dentro del juego, y esa persona trae a sus primeros 20 vecinos</dd></div>
+        <div class="sueno"><dt>Sueño</dt><dd>Su ayuntamiento pide una reunión</dd></div>
+      </dl>
+    </li>
+  </ul>
+  <p class="regla"><b>Tu parte es hablar con gente.</b> Sesenta mensajes uno a uno y diez personas vistas jugar de aquí a Carnaval: eso sí depende de ti. Cuántos entran, cuántos vuelven y qué contesta el Ayuntamiento es lo que tiene que demostrar el proyecto. No es un examen tuyo.</p>
+</section>
+
+<section class="bloque" id="ritmo" aria-labelledby="h-ritmo">
+  <h2 id="h-ritmo">Cómo se trabaja cada semana</h2>
+  <ul class="ritmo">
+    <li><span class="eti">Una cosa importante</span><span><b>Con esa, la semana está sellada.</b> La tarea que lleva <b class="clave">Lo importante</b>delante es la única que hace falta cada semana. El resto suma.</span></li>
+    <li><span class="eti">A ratos, desde el móvil</span><span><b>Mensajes, llamadas y audios.</b> Casi todo se hace desde donde estés. Lo presencial se junta en el puente de diciembre, la Navidad y el Carnaval.</span></li>
+    <li><span class="eti">Los viernes · 15 minutos</span><span><b>Un audio o una llamada con Néstor.</b> Le cuentas los tres atascos que más has visto y él te dice qué ha cambiado en el juego.</span></li>
+  </ul>
+  <p class="regla"><b>Vives entre los dos sitios donde está tu gente.</b> En Madrid tienes cerca a quienes se fueron del pueblo; en Guareña, a los vecinos y al Ayuntamiento. El plan usa las dos cosas y cabe en unas cuatro horas en una semana normal. Si una semana no puedes, lo importante pasa a la siguiente y el plan sigue. Las tareas de Guareña no caducan: se hacen la próxima vez que bajes.</p>
+</section>
+
+<section class="bloque" id="semanas" aria-labelledby="h-semanas">
+  <h2 id="h-semanas">Semana a semana</h2>
+  <p>Si lo prefieres en el tiempo, con cada plan en su fila, abre <a href="https://claude.ai/artifact/BBBahXtmdfSGG4FwMfyibP">el diagrama</a>.</p>
+  <nav aria-label="Fases del plan">
+    <ol class="fases">
+      <li><a href="#s1"><span class="eti">17–29 nov · S1–S2</span>Arrancar</a></li>
+      <li><a href="#s3"><span class="eti">30 nov–20 dic · S3–S5</span>Los primeros jugadores</a></li>
+      <li><a href="#s6"><span class="eti">21 dic–10 ene · S6–S8</span>Navidad: todo el mundo en casa</a></li>
+      <li><a href="#s9"><span class="eti">11–31 ene · S9–S11</span>La propuesta y el segundo pueblo</a></li>
+      <li><a href="#s12"><span class="eti">1–14 feb · S12–S13</span>Carnaval y decisión</a></li>
+    </ol>
+  </nav>
+
+  <div class="plan">
+
+    <div class="fase"><span class="eti">Fase 1 · 17–29 nov</span><h3>Arrancar</h3></div>
+
+    <details class="semana" id="s1" data-ini="2026-11-16" data-fin="2026-11-22" data-fechas="17–22 nov" open>
+      <summary><span class="sem">S1</span><span class="resumen"><span class="fechas">17–22 nov</span><span class="tit">Tu lista de 30</span></span><span class="sello" aria-hidden="true"><b>0/3</b></span></summary>
+      <div class="dentro">
+        <div class="carriles">
+          <div class="carril">
+            <h4>Tus tareas</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="w1c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Escribe tu lista de 30: treinta personas a las que conoces de verdad, con su móvil. Más o menos la mitad, viviendo en Guareña; la otra mitad, fuera. Vale en las notas del móvil: nombre, si vive dentro o fuera y cuál es su calle.<small class="dato">Desde donde estés · 40 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w1x1" data-t="a"><span><b class="marca">Si puedes</b>Abre un canal de WhatsApp de 388 Pueblos. Una sola red, la que ya usa tu gente; las demás pueden esperar.<small class="dato">Desde el móvil · 20 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w1x2" data-t="a"><span><b class="marca">Si puedes</b>Elige con Néstor el dominio propio y un correo de contacto.<small class="dato">Una llamada · 15 min</small></span></label></li>
+            </ul>
+          </div>
+          <div class="carril prod">
+            <h4>Lo que Néstor deja listo</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="s1p1" data-t="p"><span>Lista de espera y votos en un disco que no se borra.</span></label></li>
+              <li><label><input type="checkbox" id="s1p2" data-t="p"><span>Medición propia: quién entra, a quién le carga, quién hace algo y quién vuelve.</span></label></li>
+              <li><label><input type="checkbox" id="s1p3" data-t="p"><span>Contacto y titular rellenos en la web y en el dossier, con los enlaces a las redes.</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <p class="cierre"><span class="eti">Al acabar la semana</span>30 nombres en tu lista.</p>
+      </div>
+    </details>
+
+    <details class="semana" id="s2" data-ini="2026-11-23" data-fin="2026-11-29" data-fechas="23–29 nov">
+      <summary><span class="sem">S2</span><span class="resumen"><span class="fechas">23–29 nov</span><span class="tit">Mirar jugar a tres personas</span></span><span class="sello" aria-hidden="true"><b>0/3</b></span></summary>
+      <div class="dentro">
+        <div class="carriles">
+          <div class="carril">
+            <h4>Tus tareas</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="w2c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Tres sesiones de observación, estés donde estés: en Madrid, con gente de Guareña que vive fuera; en el pueblo, con vecinos. Les pasas el enlace, no explicas nada y miras. El guion está más abajo.<small class="dato">En persona o por videollamada · 20 min cada una</small></span></label></li>
+              <li><label><input type="checkbox" id="w2x1" data-t="a"><span><b class="marca">Si puedes</b>Busca dos cómplices en Guareña: dos personas de confianza que estén allí cuando tú no estés, para colgar un cartel, probar algo o contarte lo que se comenta.<small class="dato">Desde el móvil · 20 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w2x2" data-t="a"><span><b class="marca">Si puedes</b>Pide a una persona mayor de tu familia o de tu calle una historia del pueblo: un apodo, un oficio, un sitio que ya no existe. Con su permiso, grábala en un audio. Será una misión del juego.<small class="dato">Una llamada o una visita · 30 min</small></span></label></li>
+            </ul>
+          </div>
+          <div class="carril prod">
+            <h4>Lo que Néstor deja listo</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="s2p1" data-t="p"><span>Botón «Cuéntanos qué ha fallado» dentro del juego y aviso claro cuando no carga.</span></label></li>
+              <li><label><input type="checkbox" id="s2p2" data-t="p"><span>Enlace directo a una calle concreta, para mandar a cada persona la suya.</span></label></li>
+              <li><label><input type="checkbox" id="s2p3" data-t="p"><span>Borrador jugable de la primera misión.</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <p class="cierre"><span class="eti">Al acabar la semana</span>3 personas vistas jugar y sus atascos apuntados.</p>
+      </div>
+    </details>
+
+    <div class="fase"><span class="eti">Fase 2 · 30 nov–20 dic</span><h3>Los primeros jugadores</h3></div>
+
+    <details class="semana" id="s3" data-ini="2026-11-30" data-fin="2026-12-06" data-fechas="30 nov–6 dic">
+      <summary><span class="sem">S3</span><span class="resumen"><span class="fechas">30 nov–6 dic · Puente de diciembre</span><span class="tit">A cada uno, su calle</span></span><span class="sello" aria-hidden="true"><b>0/3</b></span></summary>
+      <div class="dentro">
+        <div class="carriles">
+          <div class="carril">
+            <h4>Tus tareas</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="w3c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Manda el enlace a las diez primeras personas de tu lista, una a una por WhatsApp y cada una con su calle. El mensaje está en los guiones, listo para copiar. Al final, pregunta a cada una a quién se lo mandaría: así la lista crece sola.<small class="dato">Desde el móvil · 40 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w3x1" data-t="a"><span><b class="marca">Si estás en el pueblo</b>Aprovecha el puente para ver jugar a tres vecinos en persona: en casa, en el bar o donde surja.<small class="dato">En Guareña · 1 h</small></span></label></li>
+              <li><label><input type="checkbox" id="w3x2" data-t="a"><span><b class="marca">Si puedes</b>Publica en el canal un clip de veinte segundos por una calle reconocible, con la pregunta «¿Sabes qué calle es?». El vídeo te lo pasa Néstor.<small class="dato">Desde el móvil · 10 min</small></span></label></li>
+            </ul>
+          </div>
+          <div class="carril prod">
+            <h4>Lo que Néstor deja listo</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="s3p1" data-t="p"><span>Primera misión publicada, con su sello en el pasaporte.</span></label></li>
+              <li><label><input type="checkbox" id="s3p2" data-t="p"><span>Primera versión de la carga ligera en el móvil: una calle en menos de diez segundos.</span></label></li>
+              <li><label><input type="checkbox" id="s3p3" data-t="p"><span>Coches con licencia limpia, sin los del mod.</span></label></li>
+              <li><label><input type="checkbox" id="s3p4" data-t="p"><span>Clips cortos de calles, listos para que los publiques.</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <p class="cierre"><span class="eti">Al acabar la semana</span>10 mensajes enviados y los primeros jugadores que no son de tu casa.</p>
+      </div>
+    </details>
+
+    <details class="semana" id="s4" data-ini="2026-12-07" data-fin="2026-12-13" data-fechas="7–13 dic">
+      <summary><span class="sem">S4</span><span class="resumen"><span class="fechas">7–13 dic</span><span class="tit">La cita en el Ayuntamiento</span></span><span class="sello" aria-hidden="true"><b>0/3</b></span></summary>
+      <div class="dentro">
+        <div class="carriles">
+          <div class="carril">
+            <h4>Tus tareas</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="w4c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Pide cita en el Ayuntamiento de Guareña, con alcaldía o con la concejalía de cultura, juventud o turismo, para un día de Navidad en que vayas a estar en el pueblo: del 21 al 23 o del 28 al 30 de diciembre. El correo está en los guiones. Si el viernes no han contestado, llama.<small class="dato">Desde donde estés · 20 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w4h" data-t="a"><span><b class="marca">Hábito</b>Tus diez mensajes de la semana: las diez personas siguientes de la lista, una a una y con su calle.<small class="dato">Desde el móvil · 40 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w4x1" data-t="a"><span><b class="marca">Si puedes</b>Decide con Néstor quién va a facturar si el Ayuntamiento dice que sí. Una asesoría os lo aclara en una cita.<small class="dato">Una llamada · 20 min</small></span></label></li>
+            </ul>
+          </div>
+          <div class="carril prod">
+            <h4>Lo que Néstor deja listo</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="s4p1" data-t="p"><span>Misiones segunda y tercera, con las historias recogidas.</span></label></li>
+              <li><label><input type="checkbox" id="s4p2" data-t="p"><span>Reto de la semana, que cambia cada lunes.</span></label></li>
+              <li><label><input type="checkbox" id="s4p3" data-t="p"><span>Correo a los apuntados. Hoy no hay forma de escribirles.</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <p class="cierre"><span class="eti">Al acabar la semana</span>Cita pedida y 20 mensajes enviados en total.</p>
+      </div>
+    </details>
+
+    <details class="semana" id="s5" data-ini="2026-12-14" data-fin="2026-12-20" data-fechas="14–20 dic">
+      <summary><span class="sem">S5</span><span class="resumen"><span class="fechas">14–20 dic</span><span class="tit">Preparar la Navidad</span></span><span class="sello" aria-hidden="true"><b>0/3</b></span></summary>
+      <div class="dentro">
+        <div class="carriles">
+          <div class="carril">
+            <h4>Tus tareas</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="w5c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Elige sitio y día para tu tarde de «Guareña en la pantalla», entre el 26 y el 30 de diciembre. Empieza en pequeño: un bar con tele o un salón, y diez o quince personas de tu lista, cada una con alguien que viva fuera.<small class="dato">Desde el móvil · 45 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w5h" data-t="a"><span><b class="marca">Hábito</b>Tus diez mensajes de la semana, esta vez con la invitación a la tarde.<small class="dato">Desde el móvil · 40 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w5x1" data-t="a"><span><b class="marca">Si puedes</b>Avisa a la radio local o a un grupo de Facebook del pueblo de que el juego existe y de la tarde. El texto te lo pasa Néstor.<small class="dato">Desde el móvil · 15 min</small></span></label></li>
+            </ul>
+          </div>
+          <div class="carril prod">
+            <h4>Lo que Néstor deja listo</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="s5p1" data-t="p"><span>Página de cada pueblo con su contador («faltan 63 vecinos») y botón para compartir por WhatsApp.</span></label></li>
+              <li><label><input type="checkbox" id="s5p2" data-t="p"><span>Clasificación de pueblos por comarca.</span></label></li>
+              <li><label><input type="checkbox" id="s5p3" data-t="p"><span>Pasaporte que se recupera con el correo en otro móvil.</span></label></li>
+              <li><label><input type="checkbox" id="s5p4" data-t="p"><span>Cartel con QR, invitación y nota corta para la radio, listos para enviar.</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <p class="cierre"><span class="eti">Al acabar la semana</span>Sitio y día cerrados, e invitaciones enviadas.</p>
+      </div>
+    </details>
+
+    <div class="fase"><span class="eti">Fase 3 · 21 dic–10 ene</span><h3>Navidad: todo el mundo en casa</h3></div>
+
+    <details class="semana" id="s6" data-ini="2026-12-21" data-fin="2026-12-27" data-fechas="21–27 dic">
+      <summary><span class="sem">S6</span><span class="resumen"><span class="fechas">21–27 dic · Navidad</span><span class="tit">Guareña en la pantalla</span></span><span class="sello" aria-hidden="true"><b>0/3</b></span></summary>
+      <div class="dentro">
+        <div class="carriles">
+          <div class="carril">
+            <h4>Tus tareas</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="w6c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Tu tarde, el día que hayas elegido: el juego en la pantalla, cada persona busca su calle y entra desde su móvil con el QR. Con diez personas ya es un éxito. Si cae el 28, el 29 o el 30, marca esta casilla ese día.<small class="dato">En Guareña · 2 h</small></span></label></li>
+              <li><label><input type="checkbox" id="w6x1" data-t="a"><span><b class="marca">Si puedes</b>Graba dos o tres reacciones de gente reconociendo su casa, con su permiso. Serán los mejores clips de toda la campaña.<small class="dato">En Guareña · durante la tarde</small></span></label></li>
+              <li><label><input type="checkbox" id="w6x2" data-t="a"><span><b class="marca">Si puedes</b>Mira jugar a dos personas a las que conozcas menos: alguien del bar, una vecina, un primo de fuera.<small class="dato">En Guareña · 40 min</small></span></label></li>
+            </ul>
+          </div>
+          <div class="carril prod">
+            <h4>Lo que Néstor deja listo</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="s6p1" data-t="p"><span>Foto dentro del juego para compartir, con el enlace a ese sitio.</span></label></li>
+              <li><label><input type="checkbox" id="s6p2" data-t="p"><span>Arreglos urgentes de lo que falle en la tarde. Nada nuevo esta semana.</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <p class="cierre"><span class="eti">Al acabar la semana</span>10 personas han entrado desde su móvil delante de ti.</p>
+      </div>
+    </details>
+
+    <details class="semana" id="s7" data-ini="2026-12-28" data-fin="2027-01-03" data-fechas="28 dic–3 ene">
+      <summary><span class="sem">S7</span><span class="resumen"><span class="fechas">28 dic–3 ene</span><span class="tit">La reunión y los encargos</span></span><span class="sello" aria-hidden="true"><b>0/2</b></span></summary>
+      <div class="dentro">
+        <div class="carriles">
+          <div class="carril">
+            <h4>Tus tareas</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="w7c" data-t="a" data-clave><span><b class="clave">Lo importante</b>La reunión en el Ayuntamiento, el día que te la hayan dado: cinco minutos de juego en directo, lo que has visto estas semanas y una pregunta. El guion está más abajo. Sal con un siguiente paso y una fecha. Si te citan otra semana, marca esta casilla cuando la hagas.<small class="dato">En Guareña · 1 h</small></span></label></li>
+              <li><label><input type="checkbox" id="w7x1" data-t="a"><span><b class="marca">Si puedes</b>Antes de que se vayan, pide a cinco personas de las que viven fuera que reenvíen el enlace al grupo de gente de Guareña de su ciudad.<small class="dato">En persona o por WhatsApp · 20 min</small></span></label></li>
+            </ul>
+          </div>
+          <div class="carril prod">
+            <h4>Lo que Néstor deja listo</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="s7p1" data-t="p"><span>Los ficheros del juego, en un servidor de descargas con más capacidad que el actual.</span></label></li>
+              <li><label><input type="checkbox" id="s7p2" data-t="p"><span>Probado en un iPhone y en un Android corriente de verdad.</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <p class="cierre"><span class="eti">Al acabar la semana</span>Reunión hecha, con un siguiente paso y una fecha.</p>
+      </div>
+    </details>
+
+    <details class="semana" id="s8" data-ini="2027-01-04" data-fin="2027-01-10" data-fechas="4–10 ene">
+      <summary><span class="sem">S8</span><span class="resumen"><span class="fechas">4–10 ene · Reyes</span><span class="tit">Semana suave</span></span><span class="sello" aria-hidden="true"><b>0/2</b></span></summary>
+      <div class="dentro">
+        <div class="carriles">
+          <div class="carril">
+            <h4>Tus tareas</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="w8c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Manda la encuesta de tres preguntas a quienes han jugado. Está en los guiones, lista para copiar.<small class="dato">Desde el móvil · 20 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w8x1" data-t="a"><span><b class="marca">Si puedes</b>Rellena el marcador de enero y repásalo con Néstor: qué ha funcionado y qué cambiáis.<small class="dato">Una llamada · 30 min</small></span></label></li>
+            </ul>
+          </div>
+          <div class="carril prod">
+            <h4>Lo que Néstor deja listo</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="s8p1" data-t="p"><span>Segundo pueblo en construcción, con las horas apuntadas por etapa.</span></label></li>
+              <li><label><input type="checkbox" id="s8p2" data-t="p"><span>Panel municipal con datos reales. Hoy es una maqueta.</span></label></li>
+              <li><label><input type="checkbox" id="s8p3" data-t="p"><span>Propuesta de una página para el Ayuntamiento, lista para que la repases.</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <p class="cierre"><span class="eti">Al acabar la semana</span>10 respuestas a la encuesta. Esta semana es corta a propósito: vienes de dos semanas de mucha gente.</p>
+      </div>
+    </details>
+
+    <div class="fase"><span class="eti">Fase 4 · 11–31 ene</span><h3>La propuesta y el segundo pueblo</h3></div>
+
+    <details class="semana" id="s9" data-ini="2027-01-11" data-fin="2027-01-17" data-fechas="11–17 ene">
+      <summary><span class="sem">S9</span><span class="resumen"><span class="fechas">11–17 ene</span><span class="tit">La propuesta, por escrito</span></span><span class="sello" aria-hidden="true"><b>0/3</b></span></summary>
+      <div class="dentro">
+        <div class="carriles">
+          <div class="carril">
+            <h4>Tus tareas</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="w9c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Entrega al Ayuntamiento la propuesta de una página, con el precio y lo que recibe el pueblo, y pide un sí o un no antes de Carnaval. Néstor te la deja redactada: tú la repasas y la envías.<small class="dato">Desde donde estés · 30 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w9h" data-t="a"><span><b class="marca">Hábito</b>Tus diez mensajes de la semana.<small class="dato">Desde el móvil · 40 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w9x1" data-t="a"><span><b class="marca">Si puedes</b>Habla con alguien de una peña de Carnaval: qué les gustaría que pasara dentro del juego durante la fiesta.<small class="dato">Una llamada · 20 min</small></span></label></li>
+            </ul>
+          </div>
+          <div class="carril prod">
+            <h4>Lo que Néstor deja listo</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="s9p1" data-t="p"><span>Modo fiesta: programa del día, punto de encuentro y foto de grupo.</span></label></li>
+              <li><label><input type="checkbox" id="s9p2" data-t="p"><span>Filtro de nombres y palabras, y registro de denuncias.</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <p class="cierre"><span class="eti">Al acabar la semana</span>Propuesta entregada y 40 mensajes enviados en total.</p>
+      </div>
+    </details>
+
+    <details class="semana" id="s10" data-ini="2027-01-18" data-fin="2027-01-24" data-fechas="18–24 ene">
+      <summary><span class="sem">S10</span><span class="resumen"><span class="fechas">18–24 ene</span><span class="tit">El segundo pueblo</span></span><span class="sello" aria-hidden="true"><b>0/3</b></span></summary>
+      <div class="dentro">
+        <div class="carriles">
+          <div class="carril">
+            <h4>Tus tareas</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="w10c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Elige el segundo pueblo con los datos de la web: el vecino de Guareña con más votos y apuntados. Busca allí a una persona que lo quiera mover y habla con ella.<small class="dato">Desde el móvil · 45 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w10h" data-t="a"><span><b class="marca">Hábito</b>Tus diez mensajes de la semana.<small class="dato">Desde el móvil · 40 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w10x1" data-t="a"><span><b class="marca">Si puedes</b>Mira jugar a tres personas nuevas, para comprobar que los atascos de noviembre ya no están.<small class="dato">En persona o por videollamada · 20 min cada una</small></span></label></li>
+            </ul>
+          </div>
+          <div class="carril prod">
+            <h4>Lo que Néstor deja listo</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="s10p1" data-t="p"><span>Prueba con muchos jugadores a la vez.</span></label></li>
+              <li><label><input type="checkbox" id="s10p2" data-t="p"><span>Precios y dossier nuevos en la web.</span></label></li>
+              <li><label><input type="checkbox" id="s10p3" data-t="p"><span>Cartel de Carnaval con QR, listo para imprimir.</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <p class="cierre"><span class="eti">Al acabar la semana</span>Segundo pueblo elegido, con una persona de allí.</p>
+      </div>
+    </details>
+
+    <details class="semana" id="s11" data-ini="2027-01-25" data-fin="2027-01-31" data-fechas="25–31 ene">
+      <summary><span class="sem">S11</span><span class="resumen"><span class="fechas">25–31 ene</span><span class="tit">Ensayo general</span></span><span class="sello" aria-hidden="true"><b>0/3</b></span></summary>
+      <div class="dentro">
+        <div class="carriles">
+          <div class="carril">
+            <h4>Tus tareas</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="w11c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Ensayo de Carnaval: cinco personas dentro del juego a la vez, una tarde, contigo. Apunta lo que falle y pásaselo a Néstor esa misma noche.<small class="dato">Desde donde estés · 1 h</small></span></label></li>
+              <li><label><input type="checkbox" id="w11h" data-t="a"><span><b class="marca">Hábito</b>Tus diez mensajes de la semana, con la invitación al Carnaval dentro del juego: día y hora.<small class="dato">Desde el móvil · 40 min</small></span></label></li>
+              <li><label><input type="checkbox" id="w11x1" data-t="a"><span><b class="marca">Si puedes</b>Pide a tus cómplices que cuelguen cinco carteles con QR en bares y comercios, y a tres personas que hagan de anfitrionas el día de la cita: estar dentro y recibir a quien entre.<small class="dato">Desde el móvil · 30 min</small></span></label></li>
+            </ul>
+          </div>
+          <div class="carril prod">
+            <h4>Lo que Néstor deja listo</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="s11p1" data-t="p"><span>Segundo pueblo publicado.</span></label></li>
+              <li><label><input type="checkbox" id="s11p2" data-t="p"><span>Arreglos del ensayo. Desde el jueves no se toca nada que no esté roto.</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <p class="cierre"><span class="eti">Al acabar la semana</span>Ensayo hecho y la cita de Carnaval anunciada con día y hora.</p>
+      </div>
+    </details>
+
+    <div class="fase"><span class="eti">Fase 5 · 1–14 feb</span><h3>Carnaval y decisión</h3></div>
+
+    <details class="semana" id="s12" data-ini="2027-02-01" data-fin="2027-02-09" data-fechas="1–9 feb">
+      <summary><span class="sem">S12</span><span class="resumen"><span class="fechas">1–9 feb · Carnaval, 6–9 feb</span><span class="tit">Carnaval</span></span><span class="sello" aria-hidden="true"><b>0/3</b></span></summary>
+      <div class="dentro">
+        <div class="carriles">
+          <div class="carril">
+            <h4>Tus tareas</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="w12c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Una cita con hora dentro del juego, el día grande del Carnaval. Tú y tus anfitriones, dentro, recibiendo a quien entre.<small class="dato">Desde donde estés · 1 h</small></span></label></li>
+              <li><label><input type="checkbox" id="w12x1" data-t="a"><span><b class="marca">Si puedes</b>Una segunda cita otro día, para quien no pudo ir a la primera.<small class="dato">Desde donde estés · 1 h</small></span></label></li>
+              <li><label><input type="checkbox" id="w12x2" data-t="a"><span><b class="marca">Si estás en el pueblo</b>Una tarde con el QR en la calle: que la gente entre desde su móvil y te diga qué le parece. Graba alguna reacción, con permiso.<small class="dato">En Guareña · 2 h</small></span></label></li>
+            </ul>
+          </div>
+          <div class="carril prod">
+            <h4>Lo que Néstor deja listo</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="s12p1" data-t="p"><span>Guardia durante los cuatro días de fiesta.</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <p class="cierre"><span class="eti">Al acabar la semana</span>Carnaval celebrado dentro del juego. Apunta cuánta gente entró.</p>
+      </div>
+    </details>
+
+    <details class="semana" id="s13" data-ini="2027-02-10" data-fin="2027-02-14" data-fechas="10–14 feb">
+      <summary><span class="sem">S13</span><span class="resumen"><span class="fechas">10–14 feb</span><span class="tit">Decidir</span></span><span class="sello" aria-hidden="true"><b>0/2</b></span></summary>
+      <div class="dentro">
+        <div class="carriles">
+          <div class="carril">
+            <h4>Tus tareas</h4>
+            <ul class="tareas">
+              <li><label><input type="checkbox" id="w13c" data-t="a" data-clave><span><b class="clave">Lo importante</b>Revisión con Néstor de las cuatro metas, altura por altura, y decisión: seguir creciendo, dar otra vuelta o cambiar de rumbo. Las reglas están al final.<small class="dato">Una llamada · 1 h</small></span></label></li>
+              <li><label><input type="checkbox" id="w13x1" data-t="a"><span><b class="marca">Si puedes</b>Mensaje de gracias a toda tu lista, con los números.<small class="dato">Desde el móvil · 20 min</small></span></label></li>
+            </ul>
+          </div>
+          <div class="carril prod">
+            <h4>Producto</h4>
+            <p>Sin entregas esta semana. Se decide con los datos.</p>
+          </div>
+        </div>
+        <p class="cierre"><span class="eti">Al acabar la semana</span>Una decisión escrita y contada a quienes han ayudado.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section class="bloque" id="marcador" aria-labelledby="h-marcador">
+  <h2 id="h-marcador">El marcador</h2>
+  <p>Se rellena cuatro veces, no cada semana. El suelo y la meta de cada casilla son una propuesta para arrancar: ajustadlos con lo que enseñe el primer mes. Los números de jugadores y de vuelta salen de la medición del juego, que Néstor tendrá lista la primera semana.</p>
+  <div class="hitos">
+    <article class="hito">
+      <h3><span class="eti">Fin de la semana 2</span>29 de noviembre</h3>
+      <ul>
+        <li><label for="m-lis-1">Nombres en tu lista<small>meta 30</small></label><input type="number" inputmode="numeric" min="0" id="m-lis-1" data-m></li>
+        <li><label for="m-obs-1">Personas vistas jugar<small>acumulado · meta 3</small></label><input type="number" inputmode="numeric" min="0" id="m-obs-1" data-m></li>
+        <li><label for="m-jug-1">Jugadores<small>acumulado · suelo 5 · meta 10</small></label><input type="number" inputmode="numeric" min="0" id="m-jug-1" data-m></li>
+      </ul>
+    </article>
+    <article class="hito">
+      <h3><span class="eti">Fin de la semana 5</span>20 de diciembre</h3>
+      <ul>
+        <li><label for="m-msg-2">Mensajes uno a uno<small>acumulado · suelo 20 · meta 30</small></label><input type="number" inputmode="numeric" min="0" id="m-msg-2" data-m></li>
+        <li><label for="m-obs-2">Personas vistas jugar<small>acumulado · suelo 3 · meta 6</small></label><input type="number" inputmode="numeric" min="0" id="m-obs-2" data-m></li>
+        <li><label for="m-jug-2">Jugadores<small>acumulado · suelo 20 · meta 40</small></label><input type="number" inputmode="numeric" min="0" id="m-jug-2" data-m></li>
+        <li><label for="m-d7-2">Vuelven a los 7 días, %<small>el primer dato, sea el que sea</small></label><input type="number" inputmode="decimal" min="0" max="100" id="m-d7-2" data-m></li>
+        <li><label for="m-ins-2">Citas con fecha<small>meta 1: el Ayuntamiento</small></label><input type="number" inputmode="numeric" min="0" id="m-ins-2" data-m></li>
+      </ul>
+    </article>
+    <article class="hito">
+      <h3><span class="eti">Fin de la semana 8</span>10 de enero</h3>
+      <ul>
+        <li><label for="m-msg-3">Mensajes uno a uno<small>acumulado · suelo 20 · meta 30</small></label><input type="number" inputmode="numeric" min="0" id="m-msg-3" data-m></li>
+        <li><label for="m-obs-3">Personas vistas jugar<small>acumulado · suelo 5 · meta 8</small></label><input type="number" inputmode="numeric" min="0" id="m-obs-3" data-m></li>
+        <li><label for="m-jug-3">Jugadores<small>acumulado · suelo 50 · meta 120</small></label><input type="number" inputmode="numeric" min="0" id="m-jug-3" data-m></li>
+        <li><label for="m-d7-3">Vuelven a los 7 días, %<small>suelo 10 · meta 15</small></label><input type="number" inputmode="decimal" min="0" max="100" id="m-d7-3" data-m></li>
+        <li><label for="m-ins-3">Instituciones<small>con siguiente paso · meta 1</small></label><input type="number" inputmode="numeric" min="0" id="m-ins-3" data-m></li>
+      </ul>
+    </article>
+    <article class="hito">
+      <h3><span class="eti">Carnaval</span>9 de febrero</h3>
+      <ul>
+        <li><label for="m-msg-4">Mensajes uno a uno<small>acumulado · suelo 40 · meta 60</small></label><input type="number" inputmode="numeric" min="0" id="m-msg-4" data-m></li>
+        <li><label for="m-obs-4">Personas vistas jugar<small>acumulado · suelo 6 · meta 10</small></label><input type="number" inputmode="numeric" min="0" id="m-obs-4" data-m></li>
+        <li><label for="m-jug-4">Jugadores<small>suelo 100 · meta 300 · sueño 1.000</small></label><input type="number" inputmode="numeric" min="0" id="m-jug-4" data-m></li>
+        <li><label for="m-d7-4">Vuelven a los 7 días, %<small>suelo 10 · meta 15 · sueño 20</small></label><input type="number" inputmode="decimal" min="0" max="100" id="m-d7-4" data-m></li>
+        <li><label for="m-ins-4">Instituciones<small>con siguiente paso · suelo 1 · meta 2</small></label><input type="number" inputmode="numeric" min="0" id="m-ins-4" data-m></li>
+        <li><label for="m-eur-4">Euros comprometidos<small>por escrito · la meta es que no sea cero</small></label><input type="number" inputmode="numeric" min="0" id="m-eur-4" data-m></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="bloque" id="guiones" aria-labelledby="h-guiones">
+  <h2 id="h-guiones">Guiones para no improvisar</h2>
+  <div class="guiones">
+    <article class="guion">
+      <h3>Sesión de observación · 20 minutos</h3>
+      <blockquote>Te mando un enlace. Ábrelo en tu móvil y haz lo que te apetezca. Yo no te voy a ayudar.</blockquote>
+      <p>Mientras juega, apunta: qué móvil usa, cuánto tarda en cargar, qué hace en los dos primeros minutos, dónde se para y qué calle busca.</p>
+      <ol>
+        <li>¿Qué esperabas encontrar?</li>
+        <li>¿Qué es lo primero que has buscado?</li>
+        <li>¿A quién se lo enseñarías?</li>
+        <li>¿Qué te haría volver mañana?</li>
+        <li>¿Qué has echado en falta?</li>
+      </ol>
+      <p class="nota">No expliques ni defiendas. Si te pregunta para qué sirve, devuélvele la pregunta.</p>
+    </article>
+    <article class="guion">
+      <h3>Mensaje de WhatsApp, uno a uno</h3>
+      <blockquote id="txt-wa">Hola, [nombre]. Estoy haciendo Guareña en un videojuego y he pensado en ti: esta es tu calle → [enlace]. ¿Me dices qué te parece? Tardas dos minutos.</blockquote>
+      <button type="button" class="copiar" id="copiar-wa" data-copia="txt-wa">Copiar el mensaje</button>
+      <p>Cambia el nombre y pon el enlace a su calle. A los tres días, si ha entrado, dos preguntas: «¿Qué fue lo primero que buscaste?» y «¿A quién se lo mandarías tú?».</p>
+      <p class="nota">Diez a la semana y no más: lo que cuenta es la conversación que viene después. Apunta en la lista quién abrió, quién jugó y quién lo reenvió.</p>
+    </article>
+    <article class="guion">
+      <h3>Correo para pedir la cita</h3>
+      <blockquote id="txt-cita">Buenos días. Soy [tu nombre], de Guareña. Estamos haciendo el pueblo en un videojuego gratuito, calle a calle, para que lo pasee cualquiera, también quien vive fuera. Me gustaría enseñárselo en veinte minutos y contarles cómo puede servir al pueblo. Estaré en Guareña del [día] al [día]. ¿Podrían recibirme? Les dejo un vídeo corto: [enlace]. Muchas gracias.</blockquote>
+      <button type="button" class="copiar" id="copiar-cita" data-copia="txt-cita">Copiar el correo</button>
+      <p class="nota">Si en una semana no contestan, llama y pregunta por quien lleva la agenda. Insistir una vez es lo normal.</p>
+    </article>
+    <article class="guion">
+      <h3>Reunión en el Ayuntamiento · 30 minutos</h3>
+      <ol>
+        <li>Cinco minutos de juego en directo, empezando por la calle de quien te recibe.</li>
+        <li>Lo que has visto: cuánta gente ha entrado, cuántos viven fuera y qué te han dicho. Dos frases de vecinos valen más que una cifra.</li>
+        <li>Una sola petición: traerles en enero una propuesta de una página, con el Carnaval dentro del juego como primera fiesta.</li>
+        <li>Si preguntan por el precio: una cuota anual de 1.500 a 2.000 euros, más la puesta en marcha. Cabe en un contrato menor.</li>
+      </ol>
+      <blockquote>¿Qué necesitarían ver para decir que sí, y quién lo decide?</blockquote>
+      <p class="nota">No salgas sin un siguiente paso con fecha. Un «no» claro también es una respuesta: pregunta qué lo cambiaría.</p>
+    </article>
+    <article class="guion">
+      <h3>Encuesta de tres preguntas</h3>
+      <blockquote id="txt-enc">Tres preguntas rápidas sobre el juego de Guareña: 1) ¿Qué fue lo mejor? 2) ¿Qué te faltó? 3) Si mañana ya no pudieras entrar, ¿cómo te sentirías: muy decepcionado, algo decepcionado o igual?</blockquote>
+      <button type="button" class="copiar" id="copiar-enc" data-copia="txt-enc">Copiar la encuesta</button>
+      <p class="nota">Como orientación: si cuatro de cada diez contestan «muy decepcionado», hay algo de verdad. Si son menos de dos, falta el motivo para volver.</p>
+    </article>
+  </div>
+</section>
+
+<section class="bloque" id="producto" aria-labelledby="h-producto">
+  <h2 id="h-producto">Lo que cambia en el producto</h2>
+  <p>Lo que Néstor tiene que cambiar en la web y en el juego para que el plan se pueda cumplir, con la semana en que debe estar listo. Además te prepara lo que vas a enviar: los clips, los carteles y la propuesta para el Ayuntamiento.</p>
+  <div class="grupos">
+    <div class="grupo">
+      <h3>Medir y no perder datos</h3>
+      <ul class="mejoras">
+        <li><span class="cuando">S1</span><p><b>Disco que no se borra para la lista de espera y los votos</b><span>Hoy se pierden en cada publicación: la web marca 0 votos.</span></p></li>
+        <li><span class="cuando">S1</span><p><b>Medición propia y anónima: entra, le carga, hace algo, vuelve</b><span>Sin esto no hay marcador. No existe ninguna medición.</span></p></li>
+        <li><span class="cuando">S2</span><p><b>Aviso claro cuando el juego no carga y botón para contar qué ha fallado</b><span>Ahora un fallo de carga deja la pantalla parada sin decir nada.</span></p></li>
+      </ul>
+    </div>
+    <div class="grupo">
+      <h3>Un motivo para volver</h3>
+      <ul class="mejoras">
+        <li><span class="cuando">S2–S4</span><p><b>Misiones, y las tres primeras de Guareña</b><span>El juego es un paseo: no hay nada que hacer el segundo día.</span></p></li>
+        <li><span class="cuando">S3–S5</span><p><b>Pasaporte dentro del juego, recuperable con el correo</b><span>Los sellos viven en un solo móvil y se pierden al cambiarlo.</span></p></li>
+        <li><span class="cuando">S4</span><p><b>Reto de la semana</b><span>Da una razón para entrar cada lunes.</span></p></li>
+        <li><span class="cuando">S4</span><p><b>Correo a los apuntados</b><span>Hoy la lista solo se puede exportar a mano; nadie recibe nada.</span></p></li>
+      </ul>
+    </div>
+    <div class="grupo">
+      <h3>Entrar bien desde el móvil</h3>
+      <ul class="mejoras">
+        <li><span class="cuando">S2</span><p><b>Enlace directo a una calle concreta</b><span>Cada persona recibe su calle: es el momento que engancha.</span></p></li>
+        <li><span class="cuando">S3</span><p><b>Carga ligera: una calle en menos de diez segundos y el resto por detrás</b><span>Cada visitante nuevo descarga hoy entre 80 y 150 MB.</span></p></li>
+        <li><span class="cuando">S6</span><p><b>Foto dentro del juego para compartir</b><span>Convierte a cada jugador en quien trae al siguiente.</span></p></li>
+        <li><span class="cuando">S7</span><p><b>Pruebas en iPhone y Android reales, con calidad baja automática</b><span>No se ha probado en Safari ni en un móvil de verdad.</span></p></li>
+        <li><span class="cuando">S7</span><p><b>Servidor de descargas con más capacidad</b><span>El alojamiento actual da para unos 700 a 1.200 visitantes nuevos al mes.</span></p></li>
+      </ul>
+    </div>
+    <div class="grupo">
+      <h3>Crecer de pueblo en pueblo</h3>
+      <ul class="mejoras">
+        <li><span class="cuando">S5</span><p><b>Página de pueblo con contador de vecinos y botón de WhatsApp</b><span>Hace de «Despierta tu pueblo» el motor de crecimiento.</span></p></li>
+        <li><span class="cuando">S5</span><p><b>Clasificación por comarcas e invitaciones con nombre</b><span>Es la primera liga, sin tocar el juego, y mide quién invita.</span></p></li>
+        <li><span class="cuando">S9</span><p><b>Modo fiesta: programa del día, punto de encuentro y foto de grupo</b><span>Lo necesita la primera «fiesta a la vez», en Carnaval.</span></p></li>
+        <li><span class="cuando">S9</span><p><b>Filtro de nombres y palabras, registro de denuncias y menores sin chat libre</b><span>Requisito para abrir al público y para entrar en un instituto.</span></p></li>
+      </ul>
+    </div>
+    <div class="grupo">
+      <h3>Vender y escalar</h3>
+      <ul class="mejoras">
+        <li><span class="cuando">S1</span><p><b>Titular, NIF, contacto y dominio en la web y en el dossier</b><span>El dossier dice «pendiente de completar»: así no se puede contratar.</span></p></li>
+        <li><span class="cuando">S3</span><p><b>Coches con licencia limpia</b><span>Los actuales vienen de un mod de otro videojuego.</span></p></li>
+        <li><span class="cuando">S8</span><p><b>Panel municipal con datos reales e informe mensual</b><span>Es lo que compra el ayuntamiento; hoy es una maqueta.</span></p></li>
+        <li><span class="cuando">S8–S11</span><p><b>Cadena para el segundo pueblo, con las horas medidas por etapa</b><span>Dice si la promesa de entrega y el precio se sostienen.</span></p></li>
+        <li><span class="cuando">S10</span><p><b>Precios y dossier nuevos: cuota anual y programa comarcal</b><span>Con la tarifa actual, una modificación de 300 euros no deja margen.</span></p></li>
+        <li><span class="cuando">S10</span><p><b>Prueba con muchos jugadores a la vez</b><span>El servidor nunca se ha probado con una fiesta dentro.</span></p></li>
+      </ul>
+    </div>
+  </div>
+  <p class="regla"><b>Congelado hasta Carnaval:</b> más realismo gráfico, más calles hechas a mano, nuevas fases de multijugador, vecinos con IA más listos y los pueblos del 3 al 388. Nada de eso cambia las cuatro metas.</p>
+</section>
+
+<section class="bloque" id="decision" aria-labelledby="h-decision">
+  <h2 id="h-decision">Cómo se decide el 14 de febrero</h2>
+  <p>Se mira a qué altura ha llegado cada meta. Las tres salidas son una respuesta, y eso es lo que se venía a buscar.</p>
+  <dl class="decision">
+    <div>
+      <dt>Seguir creciendo</dt>
+      <dd>Se llega a las metas: 15 de cada 100 vuelven a la semana, el Ayuntamiento se compromete por escrito y hacer el segundo pueblo costó una semana o menos.</dd>
+      <dd>Siguiente paso: llevar los datos a ADEVAG y a la Diputación, y preparar de cinco a diez pueblos de las Vegas Altas.</dd>
+    </div>
+    <div>
+      <dt>Otra vuelta</dt>
+      <dd>Se llega al suelo: hay gente y hay interés, pero todavía vuelven pocos o nadie se compromete.</dd>
+      <dd>Siguiente paso: otras seis semanas en Guareña, cambiando las misiones y la forma de llegar a la gente.</dd>
+    </div>
+    <div>
+      <dt>Cambiar de rumbo</dt>
+      <dd>No se llega al suelo: casi nadie vuelve y nadie se compromete.</dd>
+      <dd>Siguiente paso: parar la expansión y conservar la tecnología y lo aprendido. No es un fracaso tuyo: es un dato que hoy nadie tiene.</dd>
+    </div>
+  </dl>
+</section>
+
+<footer class="pie">
+  <p>Carnaval de 2027 según el calendario: del sábado 6 al martes 9 de febrero. Confirma el programa local con el Ayuntamiento.</p>
+  <p>La forma jurídica y los contratos los decide la asesoría; este plan solo marca cuándo hay que tenerlos resueltos.</p>
+  <p>Los tiempos son una estimación. Si una tarea se alarga, déjala donde esté y sigue otro día.</p>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var LS_T = '388plan:tareas', LS_M = '388plan:marcador';
+  var MSG_LOCAL = 'Tus marcas se guardan solo en este dispositivo.';
+  var MSG_TODOS = 'Las marcas se guardan para todas las personas con permiso para editar este plan.';
+  var MSG_LECTURA = 'Ves las marcas compartidas. Las que pongas tú se quedan en este dispositivo.';
+
+  function leer(k) {
+    try { var v = JSON.parse(localStorage.getItem(k) || '{}'); return v && typeof v === 'object' ? v : {}; }
+    catch (e) { return {}; }
+  }
+  function guardar(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  function el(id) { return document.getElementById(id); }
+
+  var tareas = leer(LS_T), marcador = leer(LS_M);
+  var cajas = Array.prototype.slice.call(document.querySelectorAll('input[type="checkbox"][data-t]'));
+  var celdas = Array.prototype.slice.call(document.querySelectorAll('input[data-m]'));
+  var semanas = Array.prototype.slice.call(document.querySelectorAll('.semana'));
+  var estado = el('estado'), avance = el('avance'), barra = el('avance-barra'), hoyTexto = el('hoy-texto');
+  var db = null, soloLocal = false, colas = {}, actual = null;
+
+  function decir(t) { if (estado) estado.textContent = t; }
+
+  function pintar() {
+    cajas.forEach(function (c) { c.checked = !!tareas[c.id]; });
+    celdas.forEach(function (c) {
+      if (document.activeElement === c) return;
+      var v = marcador[c.id];
+      c.value = (v === undefined || v === null) ? '' : v;
+    });
+    // Una semana queda sellada con su tarea importante; las demás tareas suman aparte
+    var selladas = 0, otras = 0;
+    semanas.forEach(function (s) {
+      var mias = s.querySelectorAll('input[data-t="a"]');
+      var clave = s.querySelector('input[data-clave]');
+      var n = 0;
+      for (var i = 0; i < mias.length; i++) { if (mias[i].checked) n++; }
+      var sellada = !!(clave && clave.checked);
+      var mas = n - (sellada ? 1 : 0), resto = mias.length - 1;
+      if (sellada) selladas++;
+      otras += mas;
+      var sello = s.querySelector('.sello b');
+      if (sello) sello.textContent = sellada ? 'Sellada' : n + '/' + mias.length;
+      s.classList.toggle('sellada', sellada);
+      if (s === actual && hoyTexto) {
+        if (!sellada) hoyTexto.textContent = 'Esta semana, una sola cosa importante. Hecha esa, la semana queda sellada.';
+        else if (mas >= resto) hoyTexto.textContent = 'Semana sellada, y con todo lo demás hecho.';
+        else if (mas > 0) hoyTexto.textContent = 'Semana sellada: lo importante está hecho, y ' + mas + ' de las otras ' + resto + ' también.';
+        else hoyTexto.textContent = 'Semana sellada: lo importante está hecho. Lo demás suma, pero no es obligatorio.';
+      }
+    });
+    if (avance) avance.textContent = 'Semanas selladas: ' + selladas + ' de ' + semanas.length + '.' + (otras ? ' Y ' + otras + (otras === 1 ? ' tarea más.' : ' tareas más.') : '');
+    if (barra) barra.style.width = Math.round(100 * selladas / semanas.length) + '%';
+  }
+
+  // La semana en curso, según la fecha de quien mira
+  (function () {
+    var d = new Date();
+    function p(n) { return (n < 10 ? '0' : '') + n; }
+    var hoy = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+    var eti = el('hoy-eti'), titulo = el('hoy-titulo'), ir = el('hoy-ir');
+    semanas.forEach(function (s) {
+      if (hoy >= s.getAttribute('data-ini') && hoy <= s.getAttribute('data-fin')) actual = s;
+    });
+    if (actual) {
+      semanas.forEach(function (s) { s.open = (s === actual); });
+      actual.classList.add('actual');
+      var r = actual.querySelector('.resumen');
+      if (r) {
+        var e = document.createElement('span');
+        e.className = 'ahora';
+        e.textContent = 'Esta semana';
+        r.insertBefore(e, r.firstChild);
+      }
+      var t = actual.querySelector('.tit');
+      if (eti) eti.textContent = 'Esta semana · ' + actual.getAttribute('data-fechas');
+      if (titulo && t) titulo.textContent = t.textContent;
+      if (ir) ir.setAttribute('href', '#' + actual.id);
+    } else if (hoy < semanas[0].getAttribute('data-ini')) {
+      if (eti) eti.textContent = 'Empieza el 17 de noviembre';
+      if (hoyTexto) hoyTexto.textContent = 'La primera semana pide una sola cosa importante: tu lista de 30.';
+    } else {
+      semanas.forEach(function (s) { s.open = false; });
+      if (eti) eti.textContent = 'El plan terminó el 14 de febrero';
+      if (titulo) titulo.textContent = 'Toca decidir';
+      if (hoyTexto) hoyTexto.textContent = 'Repasa el marcador y aplica las reglas de decisión.';
+      if (ir) { ir.setAttribute('href', '#decision'); ir.textContent = 'Ver cómo se decide'; }
+    }
+  })();
+
+  // Los enlaces a una semana la abren antes de saltar a ella
+  function abrir(id) {
+    var s = id ? el(id) : null;
+    if (s && s.tagName === 'DETAILS') s.open = true;
+  }
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href^="#s"]') : null;
+    if (a) abrir(a.getAttribute('href').slice(1));
+  });
+  window.addEventListener('hashchange', function () { abrir((location.hash || '').slice(1)); });
+  abrir((location.hash || '').slice(1));
+
+  // Copiar un texto para pegarlo en WhatsApp
+  Array.prototype.forEach.call(document.querySelectorAll('button[data-copia]'), function (b) {
+    var original = b.textContent;
+    b.addEventListener('click', function () {
+      var nodo = el(b.getAttribute('data-copia'));
+      if (!nodo) return;
+      var texto = nodo.textContent.trim();
+      function seleccionar() {
+        try {
+          var r = document.createRange();
+          r.selectNodeContents(nodo);
+          var s = window.getSelection();
+          s.removeAllRanges();
+          s.addRange(r);
+          b.textContent = 'Seleccionado: cópialo';
+        } catch (e) {}
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(function () {
+          b.textContent = 'Copiado';
+          setTimeout(function () { b.textContent = original; }, 2000);
+        }).catch(seleccionar);
+      } else {
+        seleccionar();
+      }
+    });
+  });
+
+  function intento(col, id, cuerpo, otra) {
+    return db.collection(col).doc(id).set(cuerpo).catch(function (e) {
+      if (otra && e && e.code === 'unavailable') {
+        return new Promise(function (ok) { setTimeout(ok, 600 + Math.random() * 800); })
+          .then(function () { return intento(col, id, cuerpo, false); });
+      }
+      throw e;
+    });
+  }
+
+  // Una escritura cada vez por documento
+  function escribir(col, id, cuerpo) {
+    if (!db || soloLocal) return;
+    var k = col + '/' + id;
+    colas[k] = (colas[k] || Promise.resolve()).then(function () {
+      if (soloLocal) return;
+      return intento(col, id, cuerpo, true);
+    }).catch(function (e) {
+      var code = e && e.code;
+      if (code === 'invalid_argument' || code === 'not_granted' || code === 'revoked') { soloLocal = true; decir(MSG_LECTURA); }
+      else decir('Ahora mismo no se ha podido guardar para todos. La marca queda en este dispositivo.');
+    });
+  }
+
+  cajas.forEach(function (c) {
+    c.addEventListener('change', function () {
+      tareas[c.id] = c.checked;
+      guardar(LS_T, tareas);
+      pintar();
+      escribir('tareas', c.id, { hecho: c.checked });
+    });
+  });
+  celdas.forEach(function (c) {
+    c.addEventListener('change', function () {
+      var v = c.value === '' ? null : Number(c.value);
+      if (v !== null && !isFinite(v)) v = null;
+      marcador[c.id] = v;
+      guardar(LS_M, marcador);
+      escribir('marcador', c.id, { v: v });
+    });
+  });
+
+  pintar();
+
+  // Si el diagrama marca algo en otra pestaña, o se vuelve atrás desde él, se repinta
+  window.addEventListener('storage', function (ev) {
+    if (ev.key === LS_T) { tareas = leer(LS_T); pintar(); }
+    else if (ev.key === LS_M) { marcador = leer(LS_M); pintar(); }
+  });
+  window.addEventListener('pageshow', function (ev) {
+    if (ev.persisted) { tareas = leer(LS_T); marcador = leer(LS_M); pintar(); }
+  });
+
+  if (!window.claude || typeof window.claude.use !== 'function') return;
+  Promise.all([window.claude.use('db'), window.claude.use('user')]).then(function (r) {
+    var d = r[0], u = r[1];
+    if (!d) return;
+    var puede = (u && typeof u.can === 'function')
+      ? u.can('data.write').catch(function () { return null; })
+      : Promise.resolve(null);
+    return puede.then(function (p) {
+      db = d;
+      if (p === false) soloLocal = true;
+      var visto = { tareas: false, marcador: false };
+      var reloj = setTimeout(function () {
+        if (!visto.tareas || !visto.marcador) decir('Todavía no se ha podido leer lo compartido. Ves lo guardado en este dispositivo.');
+      }, 10000);
+      function listo(col) {
+        if (visto[col]) return;
+        visto[col] = true;
+        if (visto.tareas && visto.marcador) { clearTimeout(reloj); decir(soloLocal ? MSG_LECTURA : MSG_TODOS); }
+      }
+      function oir(col, aplicar, clave, almacen) {
+        db.collection(col).onSnapshot(function (snap) {
+          snap.docs.forEach(function (doc) { var x = doc.data(); if (x) aplicar(doc.id, x); });
+          guardar(clave, almacen());
+          pintar();
+          if (!snap.metadata.fromCache) listo(col);
+        }, function () {
+          clearTimeout(reloj);
+          decir(MSG_LOCAL);
+        });
+      }
+      oir('tareas', function (id, x) { tareas[id] = !!x.hecho; }, LS_T, function () { return tareas; });
+      oir('marcador', function (id, x) { marcador[id] = (typeof x.v === 'number') ? x.v : null; }, LS_M, function () { return marcador; });
+    });
+  }).catch(function () {});
+})();
+</script>
